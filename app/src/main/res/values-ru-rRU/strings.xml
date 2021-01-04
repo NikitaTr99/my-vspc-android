@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Мой ВСПК</string>
+    <string name="action_settings">Настройки</string>
+    <string name="menu_home">Главная</string>
+    <string name="menu_schedule">Расписание</string>
+    <string name="menu_slideshow">Слайдшоу</string>
+    <string name="nav_site_home">Домашняя страница</string>
+    <string name="nav_site_enrollee">Абитуриенту</string>
+    <string name="nav_site_student">Студенту</string>
+    <string name="nav_site_about">О колледже</string>
+    <string name="menu_settings">Настройки</string>
+    <string name="nav_web_title">Сайт</string>
+    <string name="news_type_name_news">Новости</string>
+    <string name="news_type_name_notification">Уведомление</string>
+    <string name="news_type_name_warning">Внимание</string>
+</resources>
