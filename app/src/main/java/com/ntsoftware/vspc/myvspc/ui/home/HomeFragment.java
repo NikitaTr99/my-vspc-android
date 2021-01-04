@@ -82,7 +82,7 @@ public class HomeFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.main,menu);
+        inflater.inflate(R.menu.home_menu,menu);
         super.onCreateOptionsMenu(menu,inflater);
     }
 }

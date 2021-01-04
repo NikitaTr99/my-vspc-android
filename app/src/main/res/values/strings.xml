@@ -20,4 +20,6 @@
     <string name="news_type_name_news">news</string>
     <string name="news_type_name_notification">notification</string>
     <string name="news_type_name_warning">warning</string>
+    <string name="home_menu_action_title_exit">Exit</string>
+    <string name="schedule_menu_action_title_update">Update</string>
 </resources>
