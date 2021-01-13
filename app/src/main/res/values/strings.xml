@@ -22,4 +22,7 @@
     <string name="news_type_name_warning">warning</string>
     <string name="home_menu_action_title_exit">Exit</string>
     <string name="schedule_menu_action_title_update">Update</string>
+
+    <string name="nav_in_dev">In developing</string>
+    <string name="nav_open_site_error_toast">The site cannot be opened.</string>
 </resources>

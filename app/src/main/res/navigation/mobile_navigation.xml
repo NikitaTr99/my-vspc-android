@@ -17,4 +17,5 @@
         android:label="@string/menu_schedule"
         tools:layout="@layout/fragment_schedule" />
 
+
 </navigation>

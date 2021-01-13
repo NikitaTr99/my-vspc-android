@@ -53,12 +53,11 @@
     </style>
 
     <style name="NewsDetailText.NewsTitle">
-        <item name="android:textSize">28sp</item>
+        <item name="android:textSize">32sp</item>
         <item name="android:textStyle">bold</item>
     </style>
     <style name="NewsDetailText.NewsSubTitle">
-        <item name="android:alpha">0.75</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">22sp</item>
     </style>
 
     <style name="NewsCardsText.NewsAuthorTime">

@@ -138,8 +138,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
             type_name.setText(newsItem.getType_name());
 
-            //TODO Пофиксить временные зоны
             String date = new SimpleDateFormat("dd.MM.yy HH:mm").format(newsItem.getDate());
+
             author_time.setText(newsItem.getCreator() + AUTHOR_TIME_DIVIDEND + date);
 
 

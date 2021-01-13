@@ -1,5 +1,6 @@
 package com.ntsoftware.vspc.myvspc.ui.home.news.detail;
 
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

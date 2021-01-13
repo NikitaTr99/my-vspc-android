@@ -16,4 +16,6 @@
     <string name="news_type_name_warning">Внимание</string>
     <string name="home_menu_action_title_exit">Выйти</string>
     <string name="schedule_menu_action_title_update">Обновить</string>
+    <string name="nav_in_dev">В разработке</string>
+    <string name="nav_open_site_error_toast">Невозможно открыть сайт.</string>
 </resources>

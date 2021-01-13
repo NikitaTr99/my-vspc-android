@@ -14,11 +14,11 @@
         android:layout_height="wrap_content">
         <FrameLayout
             android:id="@+id/detail_type_mark"
-            android:background="@drawable/ic_typemarknews"
+            android:background="@drawable/ic_typemark_detail"
             android:backgroundTint="@android:color/white"
             android:layout_gravity="center_vertical"
-            android:layout_marginEnd="4dp"
-            android:layout_width="8dp"
+            android:layout_marginEnd="6dp"
+            android:layout_width="6dp"
             android:layout_height="match_parent"/>
         <TextView
             android:text="@string/app_name"
