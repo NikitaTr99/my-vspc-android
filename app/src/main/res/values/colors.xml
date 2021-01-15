@@ -8,6 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="Surface">?attr/colorSurface</color>
+    <color name="onSurface">?attr/colorOnSurface</color>
+
     <color name="colorNewsTypeNull">#FFFFFF</color>
     <color name="colorNewsTypeNews">#448AFF</color>
     <color name="colorNewsTypeNotification">#FFFF00</color>

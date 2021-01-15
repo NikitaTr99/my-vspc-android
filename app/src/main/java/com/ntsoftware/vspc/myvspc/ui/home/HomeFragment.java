@@ -1,5 +1,6 @@
 package com.ntsoftware.vspc.myvspc.ui.home;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,8 +31,6 @@ import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
-
     @BindView(R.id.home_news_rw)
     RecyclerView recyclerView;
 
@@ -39,7 +38,6 @@ public class HomeFragment extends Fragment {
     SwipeRefreshLayout swipeRefreshLayout;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this,root);
 
@@ -48,10 +46,13 @@ public class HomeFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
+        recyclerView.setAdapter(new NewsAdapter());
+
         swipeRefreshLayout.setOnRefreshListener(() -> {
             loadNews();
-            swipeRefreshLayout.setRefreshing(false);
         });
+
+        loadNews();
 
         return root;
     }
@@ -59,7 +60,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        loadNews();
     }
 
     private void loadNews() {
@@ -70,11 +70,13 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onResponse(Call<List<SimpleNews>> call, Response<List<SimpleNews>> response) {
                         recyclerView.setAdapter(new NewsAdapter(response.body()));
+                        swipeRefreshLayout.setRefreshing(false);
                     }
 
                     @Override
                     public void onFailure(Call<List<SimpleNews>> call, Throwable t) {
                         Log.e("NewsViewModel",t.getMessage());
+                        swipeRefreshLayout.setRefreshing(false);
                     }
                 });
     }

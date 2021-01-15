@@ -1,6 +1,7 @@
 package com.ntsoftware.vspc.myvspc.ui.schedule;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,22 +14,69 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.ntsoftware.vspc.myvspc.R;
+import com.ntsoftware.vspc.myvspc.services.NewsService;
+import com.ntsoftware.vspc.myvspc.services.ScheduleService;
+import com.ntsoftware.vspc.myvspc.ui.home.news.NewsAdapter;
+import com.ntsoftware.vspc.myvspc.ui.home.news.model.SimpleNews;
+import com.ntsoftware.vspc.myvspc.ui.schedule.model.SchWeek;
+
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ScheduleFragment extends Fragment {
 
-    private ScheduleViewModel galleryViewModel;
+    @BindView(R.id.rv_schedule)
+    RecyclerView sch_recycler;
+
+    SchDaysAdapter days_adapter;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel = new ViewModelProvider(this).get(ScheduleViewModel.class);
         View root = inflater.inflate(R.layout.fragment_schedule, container, false);
-
+        ButterKnife.bind(this,root);
         setHasOptionsMenu(true);
 
-        final TextView textView = root.findViewById(R.id.text_gallery);
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), s -> textView.setText(s));
+        days_adapter = new SchDaysAdapter();
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false);
+
+        sch_recycler.setLayoutManager(linearLayoutManager);
+
+        sch_recycler.setAdapter(days_adapter);
+
+        loadAdapter();
+
         return root;
+    }
+
+    private void loadAdapter(){
+
+        List<SimpleNews> simpleNews;
+
+        ScheduleService.getInstance()
+                .getJSONApi()
+                .getSchedule(1,2,4)
+                .enqueue(new Callback<SchWeek>() {
+                    @Override
+                    public void onResponse(Call<SchWeek> call, Response<SchWeek> response) {
+                        days_adapter = new SchDaysAdapter(response.body().getDays());
+                        sch_recycler.setAdapter(days_adapter);
+                    }
+
+                    @Override
+                    public void onFailure(Call<SchWeek> call, Throwable t) {
+
+                    }
+                });
     }
 
     @Override
