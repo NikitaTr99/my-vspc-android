@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -64,9 +65,9 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
 
-        navigationView.setNavigationItemSelectedListener(itemSelectedListener);
+        NavigationUI.setupWithNavController(navigationView, navController);
 
-        navigationView.setCheckedItem(R.id.nav_home);
+        navigationView.setNavigationItemSelectedListener(itemSelectedListener);
     }
 
     private void openWebSite(String url){
@@ -84,16 +85,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.nav_home:
-                    navigationView.setCheckedItem(item);
-                    navController.navigate(R.id.nav_home);
-                    drawer.close();
-                    break;
-                case R.id.nav_schedule:
-                    navigationView.setCheckedItem(item);
-                    navController.navigate(R.id.nav_schedule);
-                    drawer.close();
-                    break;
                 case R.id.nav_settings:
                     Toast.makeText(context, getString(R.string.nav_in_dev), Toast.LENGTH_SHORT).show();
                     break;
@@ -110,6 +101,8 @@ public class MainActivity extends AppCompatActivity {
                     openWebSite("https://www.vspc34.ru/index.php?option=com_content&view=category&id=104&Itemid=152");
                     break;
                 default:
+                    NavigationUI.onNavDestinationSelected(item,navController);
+                    drawer.close();
                     break;
             }
             return false;
