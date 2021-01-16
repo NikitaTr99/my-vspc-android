@@ -117,7 +117,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         public ImageView image;
 
         @BindView(R.id.news_type_mark)
-        public View typeMark;
+        public MaterialCardView typeMark;
 
         @BindView(R.id.news_card_layout)
         public MaterialCardView parentLayout;
@@ -148,30 +148,25 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
                     .error(R.drawable.accent_grad)
                     .into(image);
 
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    switch ((int) simpleNews.getType()) {
-                        case 1:
-                            typeMark.setBackgroundTintList(parentLayout.getContext().getColorStateList(R.color.colorNewsTypeNull));
-                            typeMark.setVisibility(View.GONE);
-                            type_name.setVisibility(View.GONE);
-                            break;
-                        case 2:
-                            typeMark.setBackgroundTintList(parentLayout.getContext().getColorStateList(R.color.colorNewsTypeNews));
-                            type_name.setText(R.string.news_type_name_news);
-                            break;
-                        case 3:
-                            typeMark.setBackgroundTintList(parentLayout.getContext().getColorStateList(R.color.colorNewsTypeNotification));
-                            type_name.setText(R.string.news_type_name_notification);
-                            break;
-                        case 4:
-                            typeMark.setBackgroundTintList(parentLayout.getContext().getColorStateList(R.color.colorNewsTypeWarning));
-                            type_name.setText(R.string.news_type_name_warning);
-                            break;
-                    }
-                } else {
+            switch ((int) simpleNews.getType()) {
+                case 1:
+                    typeMark.setCardBackgroundColor(parentLayout.getContext().getColor(R.color.colorNewsTypeNull));
                     typeMark.setVisibility(View.GONE);
-                }
+                    type_name.setVisibility(View.GONE);
+                    break;
+                case 2:
+                    typeMark.setCardBackgroundColor(parentLayout.getContext().getColor(R.color.colorNewsTypeNews));
+                    type_name.setText(R.string.news_type_name_news);
+                    break;
+                case 3:
+                    typeMark.setCardBackgroundColor(parentLayout.getContext().getColor(R.color.colorNewsTypeNotification));
+                    type_name.setText(R.string.news_type_name_notification);
+                    break;
+                case 4:
+                    typeMark.setCardBackgroundColor(parentLayout.getContext().getColor(R.color.colorNewsTypeWarning));
+                    type_name.setText(R.string.news_type_name_warning);
+                    break;
             }
         }
     }
+}

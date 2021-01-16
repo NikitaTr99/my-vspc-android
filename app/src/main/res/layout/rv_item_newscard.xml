@@ -85,14 +85,13 @@
 <!--              android:layout_marginEnd="2dp"-->
 <!--              android:layout_height="wrap_content" />-->
 
-            <FrameLayout
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/news_type_mark"
-                android:background="@drawable/ic_typemarknews"
-                android:backgroundTint="@android:color/white"
-                android:layout_gravity="center_vertical"
+                app:cardElevation="0dp"
                 android:layout_marginEnd="2dp"
-                android:layout_width="6dp"
-                android:layout_height="15dp"/>
+                android:layout_marginVertical="3dp"
+                android:layout_width="4dp"
+                android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/news_type_name"

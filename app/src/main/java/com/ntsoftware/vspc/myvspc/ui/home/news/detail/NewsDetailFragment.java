@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.card.MaterialCardView;
 import com.ntsoftware.vspc.myvspc.R;
 import com.ntsoftware.vspc.myvspc.services.NewsService;
 import com.ntsoftware.vspc.myvspc.ui.home.news.model.NewsBlock;
@@ -53,7 +54,7 @@ public class NewsDetailFragment extends Fragment {
     public TextView subtitle_tv;
 
     @BindView(R.id.detail_type_mark)
-    FrameLayout typeMark;
+    MaterialCardView typeMark;
 
     @BindView(R.id.detail_image)
     ImageView imageView;
@@ -96,29 +97,21 @@ public class NewsDetailFragment extends Fragment {
         title_tv.setText(title);
         subtitle_tv.setText(sub_title);
 
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            switch ((int)type) {
-                case 1:
-                    typeMark.setBackgroundTintList(getActivity().getColorStateList(R.color.colorNewsTypeNull));
-                    typeMark.setVisibility(View.GONE);
-                    break;
-                case 2:
-                    typeMark.setBackgroundTintList(getActivity().getColorStateList(R.color.colorNewsTypeNews));
-                    break;
-                case 3:
-                    typeMark.setBackgroundTintList(getActivity().getColorStateList(R.color.colorNewsTypeNotification));
-                    break;
-                case 4:
-                    typeMark.setBackgroundTintList(getActivity().getColorStateList(R.color.colorNewsTypeWarning));
-                    break;
-            }
+        switch ((int) type) {
+            case 1:
+                typeMark.setCardBackgroundColor(getContext().getColor(R.color.colorNewsTypeNull));
+                typeMark.setVisibility(View.GONE);
+                break;
+            case 2:
+                typeMark.setCardBackgroundColor(getContext().getColor(R.color.colorNewsTypeNews));
+                break;
+            case 3:
+                typeMark.setCardBackgroundColor(getContext().getColor(R.color.colorNewsTypeNotification));
+                break;
+            case 4:
+                typeMark.setCardBackgroundColor(getContext().getColor(R.color.colorNewsTypeWarning));
+                break;
         }
-        else {
-            typeMark.setVisibility(View.GONE);
-        }
-
-
 
         Picasso.get()
                 .load(image)

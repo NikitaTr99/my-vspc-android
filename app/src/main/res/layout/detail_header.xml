@@ -12,14 +12,14 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        <FrameLayout
+
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/detail_type_mark"
-            android:background="@drawable/ic_typemark_detail"
-            android:backgroundTint="@android:color/white"
-            android:layout_gravity="center_vertical"
+            app:cardElevation="0dp"
             android:layout_marginEnd="6dp"
             android:layout_width="6dp"
             android:layout_height="match_parent"/>
+
         <TextView
             android:text="@string/app_name"
             style="@style/NewsDetailText.NewsTitle"
