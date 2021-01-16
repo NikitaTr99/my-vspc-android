@@ -14,6 +14,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:overScrollMode="never"
         android:id="@+id/news_block_list"
+        android:paddingBottom="16dp"
+        android:clipToPadding="false"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
