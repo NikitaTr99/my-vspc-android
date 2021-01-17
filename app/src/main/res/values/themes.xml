@@ -70,5 +70,8 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="Widget.MaterialComponents.NavigationView.DrawerNavigation">
+    </style>
+
 
 </resources>

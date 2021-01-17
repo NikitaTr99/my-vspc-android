@@ -7,12 +7,14 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -61,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
                 .setOpenableLayout(drawer)
                 .build();
 
+
+
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
@@ -68,6 +72,19 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
         navigationView.setNavigationItemSelectedListener(itemSelectedListener);
+//
+//        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+//            switch (destination.getId()) {
+//                case R.id.nav_home:
+//                case R.id.nav_schedule:
+//                    toolbar.setNavigationIcon(R.drawable.ic_navigation);
+//                    break;
+//            }
+//        });
+//
+//        toolbar.setOverflowIcon(getDrawable(R.drawable.ic_ellypsis_vertical));
+//
+
     }
 
     private void openWebSite(String url){
