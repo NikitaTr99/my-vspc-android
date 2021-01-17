@@ -28,14 +28,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link NewsDetailFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class NewsDetailFragment extends Fragment {
 
     public static final String ARG_NEWS_ID = "news_id";
+    public static final String ARG_NEWS_TITLE = "news_title";
+    public static final String ARG_NEWS_SUB_TITLE = "news_sub_title";
+    public static final String ARG_NEWS_CREATOR = "news_creator";
+    public static final String ARG_NEWS_TYPE = "news_type";
+    public static final String ARG_NEWS_IMAGE = "news_image";
 
     private long news_id;
     private String title;
@@ -72,12 +72,11 @@ public class NewsDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             news_id = getArguments().getLong(ARG_NEWS_ID);
-            title = getArguments().getString(NewsDetailActivity.ARG_NEWS_TITLE);
-            sub_title = getArguments().getString(NewsDetailActivity.ARG_NEWS_SUB_TITLE);
-            author = getArguments().getString(NewsDetailActivity.ARG_NEWS_CREATOR);
-            type = getArguments().getLong(NewsDetailActivity.ARG_NEWS_TYPE,0);
-            image = getArguments().getString(NewsDetailActivity.ARG_NEWS_IMAGE);
-
+            title = getArguments().getString(ARG_NEWS_TITLE);
+            sub_title = getArguments().getString(ARG_NEWS_SUB_TITLE);
+            author = getArguments().getString(ARG_NEWS_CREATOR);
+            type = getArguments().getLong(ARG_NEWS_TYPE,0);
+            image = getArguments().getString(ARG_NEWS_IMAGE);
         }
 
 

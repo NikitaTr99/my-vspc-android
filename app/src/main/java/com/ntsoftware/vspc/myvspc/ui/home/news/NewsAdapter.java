@@ -1,10 +1,8 @@
 package com.ntsoftware.vspc.myvspc.ui.home.news;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +10,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
 import com.ntsoftware.vspc.myvspc.R;
 import com.ntsoftware.vspc.myvspc.ui.home.news.detail.NewsDetailActivity;
+import com.ntsoftware.vspc.myvspc.ui.home.news.detail.NewsDetailFragment;
 import com.ntsoftware.vspc.myvspc.ui.home.news.model.SimpleNews;
 import com.squareup.picasso.Picasso;
 
@@ -64,28 +64,18 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     public void onBindViewHolder(@NonNull NewsViewHolder holder, int position) {
         holder.bind(simpleNews.get(position));
 
-        Context context = holder.parentLayout.getContext();
-
-        String text = holder.simpleNews.toString();
-
         holder.parentLayout.setOnClickListener(
                 v -> {
+                    Bundle arguments = new Bundle();
 
-                    Intent intent = new Intent(context, NewsDetailActivity.class);
+                    arguments.putLong(NewsDetailActivity.ARG_NEWS_ID, holder.simpleNews.getId());
+                    arguments.putString(NewsDetailActivity.ARG_NEWS_TITLE, holder.simpleNews.getTitle());
+                    arguments.putString(NewsDetailActivity.ARG_NEWS_SUB_TITLE, holder.simpleNews.getSub_title());
+                    arguments.putString(NewsDetailActivity.ARG_NEWS_CREATOR, holder.simpleNews.getCreator());
+                    arguments.putLong(NewsDetailActivity.ARG_NEWS_TYPE, holder.simpleNews.getType());
+                    arguments.putString(NewsDetailActivity.ARG_NEWS_IMAGE, holder.simpleNews.getImage());
 
-                    intent.putExtra(NewsDetailActivity.ARG_NEWS_ID, holder.simpleNews.getId());
-                    intent.putExtra(NewsDetailActivity.ARG_NEWS_TITLE, holder.simpleNews.getTitle());
-                    intent.putExtra(NewsDetailActivity.ARG_NEWS_SUB_TITLE, holder.simpleNews.getSub_title());
-                    intent.putExtra(NewsDetailActivity.ARG_NEWS_CREATOR, holder.simpleNews.getCreator());
-                    intent.putExtra(NewsDetailActivity.ARG_NEWS_TYPE, holder.simpleNews.getType());
-                    intent.putExtra(NewsDetailActivity.ARG_NEWS_IMAGE, holder.simpleNews.getImage());
-
-                    context.startActivity(intent);
-
-
-                    ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-                    ClipData clip = ClipData.newPlainText("label", text);
-                    clipboard.setPrimaryClip(clip);
+                    Navigation.findNavController(holder.itemView).navigate(R.id.nav_news_detail_activity, arguments);
                 }
         );
     }
