@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/schedule_menu_action_update"
-        android:icon="@drawable/ic_baseline_refresh_24"
+        android:icon="@drawable/ic_refresh"
+        android:iconTint="?attr/colorOnSurface"
         android:title="@string/schedule_menu_action_title_update"
         app:showAsAction="always" />
 </menu>

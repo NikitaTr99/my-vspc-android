@@ -4,22 +4,22 @@
     tools:showIn="navigation_view">
 
     <group android:id="@+id/nav_main_pages" android:checkableBehavior="single">
-        <item android:id="@+id/nav_home" android:icon="@drawable/ic_baseline_home_24" android:title="@string/menu_home" />
-        <item android:id="@+id/nav_schedule" android:icon="@drawable/ic_baseline_schedule_24" android:title="@string/menu_schedule" />
+        <item android:id="@+id/nav_home" android:icon="@drawable/ic_home" android:title="@string/menu_home" />
+        <item android:id="@+id/nav_schedule" android:icon="@drawable/ic_schedule" android:title="@string/menu_schedule" />
     </group>
 
     <group android:id="@+id/nav_web_actions" android:checkableBehavior="none">
         <item android:title="@string/nav_web_title">
             <menu>
-                <item android:id="@+id/nav_web_home" android:title="@string/nav_site_home" android:icon="@drawable/ic_baseline_web_24"/>
-                <item android:id="@+id/nav_web_enrollee" android:title="@string/nav_site_enrollee" android:icon="@drawable/ic_baseline_web_24"/>
-                <item android:id="@+id/nav_web_student" android:title="@string/nav_site_student" android:icon="@drawable/ic_baseline_web_24"/>
-                <item android:id="@+id/nav_web_about" android:title="@string/nav_site_about" android:icon="@drawable/ic_baseline_web_24"/>
+                <item android:id="@+id/nav_web_home" android:title="@string/nav_site_home" android:icon="@drawable/ic_web"/>
+                <item android:id="@+id/nav_web_enrollee" android:title="@string/nav_site_enrollee" android:icon="@drawable/ic_web"/>
+                <item android:id="@+id/nav_web_student" android:title="@string/nav_site_student" android:icon="@drawable/ic_web"/>
+                <item android:id="@+id/nav_web_about" android:title="@string/nav_site_about" android:icon="@drawable/ic_web"/>
             </menu>
         </item>
     </group>
 
     <group android:id="@+id/nav_system_actions">
-        <item android:id="@+id/nav_settings" android:icon="@drawable/ic_baseline_settings_24" android:title="@string/menu_settings" />
+        <item android:id="@+id/nav_settings" android:icon="@drawable/ic_settings" android:title="@string/menu_settings" />
     </group>
 </menu>
