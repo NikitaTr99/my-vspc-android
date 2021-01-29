@@ -1,6 +1,5 @@
-package com.ntsoftware.vspc.myvspc.ui.home.news.detail;
+package com.ntsoftware.vspc.myvspc.screens.news.detail;
 
-import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ntsoftware.vspc.myvspc.R;
-import com.ntsoftware.vspc.myvspc.ui.home.news.model.NewsBlock;
+import com.ntsoftware.vspc.myvspc.screens.news.model.NewsBlock;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -19,11 +18,11 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class BlocksAdapter extends RecyclerView.Adapter<BlocksAdapter.BlockViewHolder>{
+public class RvBlocksAdapter extends RecyclerView.Adapter<RvBlocksAdapter.BlockViewHolder>{
 
     private List<NewsBlock> blocks;
 
-    public BlocksAdapter(List<NewsBlock> blocks) {
+    public RvBlocksAdapter(List<NewsBlock> blocks) {
         this.blocks = blocks;
     }
 

@@ -1,7 +1,6 @@
-package com.ntsoftware.vspc.myvspc.ui.home.news;
+package com.ntsoftware.vspc.myvspc.screens.news;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,9 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
 import com.ntsoftware.vspc.myvspc.R;
-import com.ntsoftware.vspc.myvspc.ui.home.news.detail.NewsDetailActivity;
-import com.ntsoftware.vspc.myvspc.ui.home.news.detail.NewsDetailFragment;
-import com.ntsoftware.vspc.myvspc.ui.home.news.model.SimpleNews;
+import com.ntsoftware.vspc.myvspc.screens.news.detail.NewsDetailActivity;
+import com.ntsoftware.vspc.myvspc.screens.news.model.SimpleNews;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -27,15 +25,15 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
+public class RvNewsAdapter extends RecyclerView.Adapter<RvNewsAdapter.NewsViewHolder> {
 
     private List<SimpleNews> simpleNews;
 
-    public NewsAdapter() {
+    public RvNewsAdapter() {
         simpleNews = new ArrayList<>();
     }
 
-    public NewsAdapter(List<SimpleNews> simpleNews) {
+    public RvNewsAdapter(List<SimpleNews> simpleNews) {
         this.simpleNews = simpleNews;
     }
 
@@ -44,7 +42,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         this.notifyDataSetChanged();
     }
 
-    public void  addItems(List<SimpleNews> items) {
+    public void addItems(List<SimpleNews> items) {
         simpleNews.addAll(items);
         this.notifyDataSetChanged();
     }
@@ -53,7 +51,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     @Override
     public NewsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
-        int layout_id_from_list_item = R.layout.rv_item_newscard;
+        int layout_id_from_list_item = R.layout.rv_item_newscard_variant;
 
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(layout_id_from_list_item, parent, false);
@@ -62,18 +60,20 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull NewsViewHolder holder, int position) {
+
         holder.bind(simpleNews.get(position));
 
         holder.parentLayout.setOnClickListener(
                 v -> {
-                    Bundle arguments = new Bundle();
+                    SimpleNews simpleNews = holder.simpleNews;
 
-                    arguments.putLong(NewsDetailActivity.ARG_NEWS_ID, holder.simpleNews.getId());
-                    arguments.putString(NewsDetailActivity.ARG_NEWS_TITLE, holder.simpleNews.getTitle());
-                    arguments.putString(NewsDetailActivity.ARG_NEWS_SUB_TITLE, holder.simpleNews.getSub_title());
-                    arguments.putString(NewsDetailActivity.ARG_NEWS_CREATOR, holder.simpleNews.getCreator());
-                    arguments.putLong(NewsDetailActivity.ARG_NEWS_TYPE, holder.simpleNews.getType());
-                    arguments.putString(NewsDetailActivity.ARG_NEWS_IMAGE, holder.simpleNews.getImage());
+                    Bundle arguments = NewsDetailActivity.newBundle(simpleNews.getId(),
+                            simpleNews.getTitle(),
+                            simpleNews.getSub_title(),
+                            simpleNews.getCreator(),
+                            simpleNews.getType(),
+                            simpleNews.getImage()
+                    );
 
                     Navigation.findNavController(holder.itemView).navigate(R.id.nav_news_detail_activity, arguments);
                 }
@@ -110,7 +110,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         public MaterialCardView typeMark;
 
         @BindView(R.id.news_card_layout)
-        public MaterialCardView parentLayout;
+        public View parentLayout;
 
 
         public NewsViewHolder(@NonNull View itemView) {

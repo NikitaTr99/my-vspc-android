@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <com.google.android.material.card.MaterialCardView
     android:id="@+id/news_card_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:foreground="?android:attr/selectableItemBackground"
     android:clickable="true"
     app:cardCornerRadius="16dp"
@@ -19,7 +19,9 @@
         android:id="@+id/news_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        tools:background="@color/colorNewsTypeNews"
+        />
 
     <ImageView
         android:layout_width="match_parent"
@@ -49,7 +51,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:maxLines="2" />
+                android:maxLines="2"
+                tools:text="Заголовок"
+                />
 
             <TextView
                 android:id="@+id/news_sub_title"
@@ -57,7 +61,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:maxLines="3" />
+                android:maxLines="3"
+                tools:text="Подзаголовок"
+                />
         </LinearLayout>
 
         <TextView
@@ -68,7 +74,9 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Команда ВСПК 12.02.2021"
+            />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -91,7 +99,8 @@
                 android:layout_marginEnd="2dp"
                 android:layout_marginVertical="3dp"
                 android:layout_width="4dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                />
 
             <TextView
                 android:id="@+id/news_type_name"
@@ -99,7 +108,9 @@
                 android:layout_gravity="center_vertical"
                 style="@style/NewsCardsText.NewsType"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:text="Новости"
+                />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,12 +1,10 @@
-package com.ntsoftware.vspc.myvspc.ui.home.news.detail;
+package com.ntsoftware.vspc.myvspc.screens.news.detail;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.card.MaterialCardView;
 import com.ntsoftware.vspc.myvspc.R;
 import com.ntsoftware.vspc.myvspc.services.NewsService;
-import com.ntsoftware.vspc.myvspc.ui.home.news.model.NewsBlock;
+import com.ntsoftware.vspc.myvspc.screens.news.model.NewsBlock;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -127,7 +125,7 @@ public class NewsDetailFragment extends Fragment {
                 .enqueue(new Callback<List<NewsBlock>>() {
                     @Override
                     public void onResponse(Call<List<NewsBlock>> call, Response<List<NewsBlock>> response) {
-                        recyclerView.setAdapter(new BlocksAdapter(response.body()));
+                        recyclerView.setAdapter(new RvBlocksAdapter(response.body()));
                     }
 
                     @Override

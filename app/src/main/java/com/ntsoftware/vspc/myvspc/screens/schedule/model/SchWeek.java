@@ -1,4 +1,4 @@
-package com.ntsoftware.vspc.myvspc.ui.schedule.model;
+package com.ntsoftware.vspc.myvspc.screens.schedule.model;
 
 import java.util.ArrayList;
 import java.util.List;

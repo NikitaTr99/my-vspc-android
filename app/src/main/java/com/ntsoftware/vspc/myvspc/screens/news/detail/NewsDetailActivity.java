@@ -1,4 +1,4 @@
-package com.ntsoftware.vspc.myvspc.ui.home.news.detail;
+package com.ntsoftware.vspc.myvspc.screens.news.detail;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -21,6 +21,20 @@ public class NewsDetailActivity extends AppCompatActivity {
     public static final String ARG_NEWS_CREATOR = "news_creator";
     public static final String ARG_NEWS_TYPE = "news_type";
     public static final String ARG_NEWS_IMAGE = "news_image";
+
+    public static Bundle newBundle(long id, String title, String subtitle, String creator, long type, String image) {
+
+        Bundle bundle = new Bundle();
+
+        bundle.putLong(ARG_NEWS_ID, id);
+        bundle.putString(ARG_NEWS_TITLE, title);
+        bundle.putString(ARG_NEWS_SUB_TITLE, subtitle);
+        bundle.putString(ARG_NEWS_CREATOR, creator);
+        bundle.putLong(ARG_NEWS_TYPE, type);
+        bundle.putString(ARG_NEWS_IMAGE,image);
+
+        return bundle;
+    }
 
 
 

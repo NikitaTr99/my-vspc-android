@@ -1,28 +1,21 @@
-package com.ntsoftware.vspc.myvspc.ui.schedule;
+package com.ntsoftware.vspc.myvspc.screens.schedule;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ntsoftware.vspc.myvspc.R;
-import com.ntsoftware.vspc.myvspc.services.NewsService;
 import com.ntsoftware.vspc.myvspc.services.ScheduleService;
-import com.ntsoftware.vspc.myvspc.ui.home.news.NewsAdapter;
-import com.ntsoftware.vspc.myvspc.ui.home.news.model.SimpleNews;
-import com.ntsoftware.vspc.myvspc.ui.schedule.model.SchWeek;
+import com.ntsoftware.vspc.myvspc.screens.news.model.SimpleNews;
+import com.ntsoftware.vspc.myvspc.screens.schedule.model.SchWeek;
 
 import java.util.List;
 
@@ -37,7 +30,7 @@ public class ScheduleFragment extends Fragment {
     @BindView(R.id.rv_schedule)
     RecyclerView sch_recycler;
 
-    SchDaysAdapter days_adapter;
+    RvSchDaysAdapter days_adapter;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,7 +38,7 @@ public class ScheduleFragment extends Fragment {
         ButterKnife.bind(this,root);
         setHasOptionsMenu(true);
 
-        days_adapter = new SchDaysAdapter();
+        days_adapter = new RvSchDaysAdapter();
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false);
 
@@ -68,7 +61,7 @@ public class ScheduleFragment extends Fragment {
                 .enqueue(new Callback<SchWeek>() {
                     @Override
                     public void onResponse(Call<SchWeek> call, Response<SchWeek> response) {
-                        days_adapter = new SchDaysAdapter(response.body().getDays());
+                        days_adapter = new RvSchDaysAdapter(response.body().getDays());
                         sch_recycler.setAdapter(days_adapter);
                     }
 

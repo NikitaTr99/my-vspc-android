@@ -1,6 +1,6 @@
 package com.ntsoftware.vspc.myvspc.services.api;
 
-import com.ntsoftware.vspc.myvspc.ui.schedule.model.SchWeek;
+import com.ntsoftware.vspc.myvspc.screens.schedule.model.SchWeek;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

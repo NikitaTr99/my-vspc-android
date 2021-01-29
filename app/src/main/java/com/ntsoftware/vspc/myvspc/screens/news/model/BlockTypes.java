@@ -1,4 +1,4 @@
-package com.ntsoftware.vspc.myvspc.ui.home.news.model;
+package com.ntsoftware.vspc.myvspc.screens.news.model;
 
 public enum BlockTypes {
     TEXT(1),

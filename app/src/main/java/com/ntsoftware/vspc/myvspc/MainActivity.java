@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupNavigation() {
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_schedule)
+                R.id.nav_discover,R.id.nav_home, R.id.nav_schedule)
                 .setOpenableLayout(drawer)
                 .build();
 

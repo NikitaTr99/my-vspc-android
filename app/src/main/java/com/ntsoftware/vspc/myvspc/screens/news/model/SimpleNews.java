@@ -1,4 +1,4 @@
-package com.ntsoftware.vspc.myvspc.ui.home.news.model;
+package com.ntsoftware.vspc.myvspc.screens.news.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

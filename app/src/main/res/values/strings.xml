@@ -25,4 +25,6 @@
 
     <string name="nav_in_dev">In developing</string>
     <string name="nav_open_site_error_toast">The site cannot be opened.</string>
+    <string name="hello_discover_fragment" translatable="false">Discover screen</string>
+    <string name="menu_discover">Discover</string>
 </resources>

@@ -1,8 +1,8 @@
 package com.ntsoftware.vspc.myvspc.services.api;
 
 
-import com.ntsoftware.vspc.myvspc.ui.home.news.model.NewsBlock;
-import com.ntsoftware.vspc.myvspc.ui.home.news.model.SimpleNews;
+import com.ntsoftware.vspc.myvspc.screens.news.model.NewsBlock;
+import com.ntsoftware.vspc.myvspc.screens.news.model.SimpleNews;
 
 import java.util.List;
 

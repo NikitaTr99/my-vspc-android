@@ -14,7 +14,7 @@
         android:theme="@style/Theme.MyVSPC">
         <activity
             android:theme="@style/Theme.MyVSPC.NoActionBar"
-            android:name=".ui.home.news.detail.NewsDetailActivity"></activity>
+            android:name=".screens.news.detail.NewsDetailActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

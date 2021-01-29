@@ -4,6 +4,7 @@
     tools:showIn="navigation_view">
 
     <group android:id="@+id/nav_main_pages" android:checkableBehavior="single">
+        <item android:id="@+id/nav_discover" android:icon="@drawable/ic_discover" android:title="@string/menu_discover" />
         <item android:id="@+id/nav_home" android:icon="@drawable/ic_home" android:title="@string/menu_home" />
         <item android:id="@+id/nav_schedule" android:icon="@drawable/ic_schedule" android:title="@string/menu_schedule" />
     </group>

@@ -1,4 +1,4 @@
-package com.ntsoftware.vspc.myvspc.ui.schedule;
+package com.ntsoftware.vspc.myvspc.screens.schedule;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,23 +10,23 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ntsoftware.vspc.myvspc.R;
-import com.ntsoftware.vspc.myvspc.ui.schedule.model.LessonDetail;
+import com.ntsoftware.vspc.myvspc.screens.schedule.model.LessonDetail;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SchLessonAdapter extends RecyclerView.Adapter<SchLessonAdapter.SchLessonViewHolder> {
+public class RvSchLessonAdapter extends RecyclerView.Adapter<RvSchLessonAdapter.SchLessonViewHolder> {
 
     Context context;
 
     List<LessonDetail> lessons;
 
-    public SchLessonAdapter() {
+    public RvSchLessonAdapter() {
     }
 
-    public SchLessonAdapter(List<LessonDetail> lessons) {
+    public RvSchLessonAdapter(List<LessonDetail> lessons) {
         this.lessons = lessons;
     }
 

@@ -1,6 +1,5 @@
-package com.ntsoftware.vspc.myvspc.ui.home;
+package com.ntsoftware.vspc.myvspc.screens.news;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,15 +10,13 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.ntsoftware.vspc.myvspc.R;
 import com.ntsoftware.vspc.myvspc.services.NewsService;
-import com.ntsoftware.vspc.myvspc.ui.home.news.NewsAdapter;
-import com.ntsoftware.vspc.myvspc.ui.home.news.model.SimpleNews;
+import com.ntsoftware.vspc.myvspc.screens.news.model.SimpleNews;
 
 import java.util.List;
 
@@ -29,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeFragment extends Fragment {
+public class NewsFragment extends Fragment {
 
     @BindView(R.id.home_news_rw)
     RecyclerView recyclerView;
@@ -46,7 +43,7 @@ public class HomeFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        recyclerView.setAdapter(new NewsAdapter());
+        recyclerView.setAdapter(new RvNewsAdapter());
 
         swipeRefreshLayout.setOnRefreshListener(() -> {
             loadNews();
@@ -69,7 +66,7 @@ public class HomeFragment extends Fragment {
                 .enqueue(new Callback<List<SimpleNews>>() {
                     @Override
                     public void onResponse(Call<List<SimpleNews>> call, Response<List<SimpleNews>> response) {
-                        recyclerView.setAdapter(new NewsAdapter(response.body()));
+                        recyclerView.setAdapter(new RvNewsAdapter(response.body()));
                         swipeRefreshLayout.setRefreshing(false);
                     }
 

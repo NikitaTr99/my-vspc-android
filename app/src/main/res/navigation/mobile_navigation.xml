@@ -4,29 +4,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_discover">
+
+    <fragment
+        android:id="@+id/nav_discover"
+        android:name="com.ntsoftware.vspc.myvspc.screens.discover.DiscoverFragment"
+        android:label="@string/menu_discover"
+        tools:layout="@layout/fragment_discover"
+        />
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.ntsoftware.vspc.myvspc.ui.home.HomeFragment"
+        android:name="com.ntsoftware.vspc.myvspc.screens.news.NewsFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home"/>
 
     <fragment
         android:id="@+id/nav_schedule"
-        android:name="com.ntsoftware.vspc.myvspc.ui.schedule.ScheduleFragment"
+        android:name="com.ntsoftware.vspc.myvspc.screens.schedule.ScheduleFragment"
         android:label="@string/menu_schedule"
         tools:layout="@layout/fragment_schedule"/>
 
     <fragment
         android:id="@+id/nav_news_detail"
-        android:name="com.ntsoftware.vspc.myvspc.ui.home.news.detail.NewsDetailFragment"
+        android:name="com.ntsoftware.vspc.myvspc.screens.news.detail.NewsDetailFragment"
         tools:layout="@layout/fragment_news_detail"/>
 
     <activity
         android:id="@+id/nav_news_detail_activity"
         tools:layout="@layout/fragment_news_detail"
-        android:name="com.ntsoftware.vspc.myvspc.ui.home.news.detail.NewsDetailActivity"/>
+        android:name="com.ntsoftware.vspc.myvspc.screens.news.detail.NewsDetailActivity"/>
 
 
 

@@ -1,4 +1,4 @@
-package com.ntsoftware.vspc.myvspc.ui.home.news.model;
+package com.ntsoftware.vspc.myvspc.screens.news.model;
 
 public class NewsBlock {
     private long id;

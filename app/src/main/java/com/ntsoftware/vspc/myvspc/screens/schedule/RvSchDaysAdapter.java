@@ -1,4 +1,4 @@
-package com.ntsoftware.vspc.myvspc.ui.schedule;
+package com.ntsoftware.vspc.myvspc.screens.schedule;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ntsoftware.vspc.myvspc.R;
-import com.ntsoftware.vspc.myvspc.ui.schedule.model.SchWeek;
+import com.ntsoftware.vspc.myvspc.screens.schedule.model.SchWeek;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,17 +19,17 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SchDaysAdapter extends RecyclerView.Adapter<SchDaysAdapter.SchDayViewHolder> {
+public class RvSchDaysAdapter extends RecyclerView.Adapter<RvSchDaysAdapter.SchDayViewHolder> {
 
     Context context;
 
     List<SchWeek.SchDay> days;
 
-    public SchDaysAdapter() {
+    public RvSchDaysAdapter() {
         days = new ArrayList<>();
     }
 
-    public SchDaysAdapter(List<SchWeek.SchDay> days) {
+    public RvSchDaysAdapter(List<SchWeek.SchDay> days) {
         this.days = days;
     }
 
@@ -47,7 +47,7 @@ public class SchDaysAdapter extends RecyclerView.Adapter<SchDaysAdapter.SchDayVi
     public void onBindViewHolder(@NonNull SchDayViewHolder holder, int position) {
         holder.name_of_day.setText(days.get(position).getName_day_of_week());
 
-        holder.lessons_recycler.setAdapter(new SchLessonAdapter(days.get(position).getLessons()));
+        holder.lessons_recycler.setAdapter(new RvSchLessonAdapter(days.get(position).getLessons()));
 
     }
 
