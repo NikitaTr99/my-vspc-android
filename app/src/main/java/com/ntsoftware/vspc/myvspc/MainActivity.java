@@ -19,6 +19,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import butterknife.BindView;
@@ -30,11 +31,11 @@ public class MainActivity extends AppCompatActivity {
 
     private final Context context = this;
 
-    @BindView(R.id.nav_view)
-    NavigationView navigationView;
+//    @BindView(R.id.nav_view)
+//    NavigationView navigationView;
 
-    @BindView(R.id.drawer_layout)
-    DrawerLayout drawer;
+    @BindView(R.id.bottom_nav)
+    BottomNavigationView navigationView;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -52,15 +53,12 @@ public class MainActivity extends AppCompatActivity {
 
         setupNavigation();
 
-
-
-
     }
 
     private void setupNavigation() {
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_discover,R.id.nav_home, R.id.nav_schedule)
-                .setOpenableLayout(drawer)
+                R.id.nav_discover,R.id.nav_news, R.id.nav_schedule)
                 .build();
 
 
@@ -71,19 +69,9 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        navigationView.setNavigationItemSelectedListener(itemSelectedListener);
-//
-//        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-//            switch (destination.getId()) {
-//                case R.id.nav_home:
-//                case R.id.nav_schedule:
-//                    toolbar.setNavigationIcon(R.drawable.ic_navigation);
-//                    break;
-//            }
-//        });
+//        navigationView.setNavigationItemSelectedListener(itemSelectedListener);
 //
 //        toolbar.setOverflowIcon(getDrawable(R.drawable.ic_ellypsis_vertical));
-//
 
     }
 
@@ -119,19 +107,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 default:
                     NavigationUI.onNavDestinationSelected(item,navController);
-                    drawer.close();
                     break;
             }
             return false;
         }
     };
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
-    }
-
-
 }

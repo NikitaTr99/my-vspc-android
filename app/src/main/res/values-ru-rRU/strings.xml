@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Мой ВСПК</string>
     <string name="action_settings">Настройки</string>
-    <string name="menu_home">Главная</string>
+    <string name="menu_news">Новости</string>
     <string name="menu_schedule">Расписание</string>
     <string name="menu_slideshow">Слайдшоу</string>
     <string name="nav_site_home">Домашняя страница</string>

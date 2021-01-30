@@ -3,8 +3,6 @@ package com.ntsoftware.vspc.myvspc.screens.news;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -35,10 +33,8 @@ public class NewsFragment extends Fragment {
     SwipeRefreshLayout swipeRefreshLayout;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
+        View root = inflater.inflate(R.layout.fragment_news, container, false);
         ButterKnife.bind(this,root);
-
-        setHasOptionsMenu(true);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -76,12 +72,5 @@ public class NewsFragment extends Fragment {
                         swipeRefreshLayout.setRefreshing(false);
                     }
                 });
-    }
-
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.home_menu,menu);
-        super.onCreateOptionsMenu(menu,inflater);
     }
 }

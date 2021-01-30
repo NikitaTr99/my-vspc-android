@@ -14,10 +14,10 @@
         />
 
     <fragment
-        android:id="@+id/nav_home"
+        android:id="@+id/nav_news"
         android:name="com.ntsoftware.vspc.myvspc.screens.news.NewsFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home"/>
+        android:label="@string/menu_news"
+        tools:layout="@layout/fragment_news"/>
 
     <fragment
         android:id="@+id/nav_schedule"

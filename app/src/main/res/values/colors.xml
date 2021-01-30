@@ -8,10 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-<!--    <color name="colorPrimary">#FFBB86FC</color>-->
-<!--    <color name="colorPrimaryVariant">#FFBB86FC</color>-->
-<!--    <color name="colorSecondary">#FFBB86FC</color>-->
-<!--    <color name="colorSecondaryVariant">#FFBB86FC</color>-->
+    <color name="colorPrimary">#03A9F4</color>
+    <color name="colorPrimaryVariant">#0288D1</color>
+    <color name="colorSecondary">#FFC400</color>
+    <color name="colorSecondaryVariant">#F57C00</color>
 
     <color name="colorDrawerLight">#FFFFFF</color>
     <color name="colorDrawerDark">#000000</color>

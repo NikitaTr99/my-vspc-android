@@ -27,7 +27,7 @@
                 android:id="@+id/sch_lesson_start"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10:20"
+                tools:text="10:20"
                 android:textColor="?attr/colorAccent"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -36,14 +36,14 @@
                 android:id="@+id/sch_lesson_end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10:40"
+                tools:text="10:40"
                 android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/sch_lesson_break"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="20"
+                tools:text="20"
                 android:textSize="12sp" />
 
         </LinearLayout>
@@ -62,7 +62,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="МДК 01.04"
+                tools:text="МДК 01.04"
                 android:textColor="?attr/colorOnSurface"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -73,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="Практика, Бетиров А.Е., ауд. 2-4" />
+                tools:text="Практика, Бетиров А.Е., ауд. 2-4" />
 
         </LinearLayout>
 
