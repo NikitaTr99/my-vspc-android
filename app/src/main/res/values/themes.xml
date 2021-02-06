@@ -31,7 +31,7 @@
     </style>
 
     <style name="Theme.MyVSPC.ToolBar.Title" parent="TextAppearance.AppCompat.Widget.ActionMode.Title">
-
+        <item name="android:textSize">22sp</item>
     </style>
 
     <style name="NewsCardsText">

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    android:layout_marginHorizontal="8dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/tv_name_of_day"
+        android:layout_marginVertical="8dp"
+        android:layout_marginStart="8dp"
+        tools:text="Расписание"
+        android:text="Расписание"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="?attr/colorOnSurface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_service_message"
+        android:gravity="center"
+        android:visibility="gone"
+        tools:text="Сервис недоступен"
+        android:text="Сервис недоступен"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        tools:listitem="@layout/rv_item_schedule_lesson"
+        tools:itemCount="4"
+        android:overScrollMode="never"
+        android:nestedScrollingEnabled="false"
+        android:id="@+id/rv_discover_schedule_lesson"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+
+</LinearLayout>

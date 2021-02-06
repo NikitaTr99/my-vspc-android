@@ -13,6 +13,8 @@
         android:overScrollMode="never"
         android:paddingBottom="16dp"
         android:clipToPadding="false"
+        tools:listitem="@layout/rv_item_newscard_variant"
+        tools:itemCount="3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

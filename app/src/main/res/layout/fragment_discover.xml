@@ -6,10 +6,12 @@
     tools:showIn="@layout/activity_main"
     tools:context=".screens.discover.DiscoverFragment">
 
-    <TextView
-        android:gravity="center"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/discover_rv"
+        android:overScrollMode="never"
+        android:paddingBottom="16dp"
+        android:clipToPadding="false"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_discover_fragment" />
+        android:layout_height="match_parent"/>
 
 </FrameLayout>

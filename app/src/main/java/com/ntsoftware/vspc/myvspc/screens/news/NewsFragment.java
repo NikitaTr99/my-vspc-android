@@ -34,17 +34,9 @@ public class NewsFragment extends Fragment {
     @BindView(R.id.rfl)
     SwipeRefreshLayout swipeRefreshLayout;
 
-    private ActionBar actionBar;
-
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_news, container, false);
         ButterKnife.bind(this,root);
-
-        actionBar = ((MainActivity)getActivity()).getSupportActionBar();
-
-        if(!actionBar.isShowing()) {
-            actionBar.show();
-        }
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
