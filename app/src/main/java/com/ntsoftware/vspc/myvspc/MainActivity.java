@@ -11,6 +11,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
@@ -31,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
     private final Context context = this;
 
-//    @BindView(R.id.nav_view)
-//    NavigationView navigationView;
+    @BindView(R.id.scroll_layout)
+    CoordinatorLayout scroll_layout;
 
     @BindView(R.id.bottom_nav)
     BottomNavigationView navigationView;
@@ -58,10 +60,8 @@ public class MainActivity extends AppCompatActivity {
     private void setupNavigation() {
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_discover,R.id.nav_news, R.id.nav_schedule)
+                R.id.nav_discover,R.id.nav_news, R.id.nav_schedule, R.id.nav_other)
                 .build();
-
-
 
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 
@@ -69,47 +69,9 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationUI.setupWithNavController(navigationView, navController);
 
-//        navigationView.setNavigationItemSelectedListener(itemSelectedListener);
-//
-//        toolbar.setOverflowIcon(getDrawable(R.drawable.ic_ellypsis_vertical));
-
     }
 
-    private void openWebSite(String url){
-        try {
-            new CustomTabsIntent.Builder().build().launchUrl(this, Uri.parse(url));
-        } catch (Exception e){
-            e.printStackTrace();
-            Toast.makeText(this,getString(R.string.nav_open_site_error_toast) ,Toast.LENGTH_SHORT).show();
-        }
+    public CoordinatorLayout getScrollLayout() {
+        return scroll_layout;
     }
-
-
-    NavigationView.OnNavigationItemSelectedListener itemSelectedListener = new NavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.nav_settings:
-                    Toast.makeText(context, getString(R.string.nav_in_dev), Toast.LENGTH_SHORT).show();
-                    break;
-                case R.id.nav_web_home:
-                    openWebSite("https://www.vspc34.ru/");
-                    break;
-                case R.id.nav_web_enrollee:
-                    openWebSite("https://www.vspc34.ru/index.php?option=com_content&view=category&id=9&Itemid=22");
-                    break;
-                case R.id.nav_web_student:
-                    openWebSite("https://www.vspc34.ru/index.php?option=com_content&view=category&id=50&Itemid=42");
-                    break;
-                case R.id.nav_web_about:
-                    openWebSite("https://www.vspc34.ru/index.php?option=com_content&view=category&id=104&Itemid=152");
-                    break;
-                default:
-                    NavigationUI.onNavDestinationSelected(item,navController);
-                    break;
-            }
-            return false;
-        }
-    };
 }

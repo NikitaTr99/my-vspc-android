@@ -19,4 +19,5 @@
     <string name="nav_in_dev">В разработке</string>
     <string name="nav_open_site_error_toast">Невозможно открыть сайт.</string>
     <string name="menu_discover">Обзор</string>
+    <string name="menu_other">Прочее</string>
 </resources>

@@ -26,6 +26,12 @@
         tools:layout="@layout/fragment_schedule"/>
 
     <fragment
+        android:id="@+id/nav_other"
+        android:name="com.ntsoftware.vspc.myvspc.screens.other.OtherFragment"
+        android:label="@string/menu_other"
+        tools:layout="@layout/fragment_other"/>
+
+    <fragment
         android:id="@+id/nav_news_detail"
         android:name="com.ntsoftware.vspc.myvspc.screens.news.detail.NewsDetailFragment"
         tools:layout="@layout/fragment_news_detail"/>

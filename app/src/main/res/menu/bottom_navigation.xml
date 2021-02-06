@@ -3,4 +3,5 @@
     <item android:id="@+id/nav_discover" android:icon="@drawable/ic_discover" android:title="@string/menu_discover" />
     <item android:id="@+id/nav_schedule" android:icon="@drawable/ic_schedule" android:title="@string/menu_schedule" />
     <item android:id="@+id/nav_news" android:icon="@drawable/ic_news" android:title="@string/menu_news" />
+    <item android:id="@+id/nav_other" android:icon="@drawable/ic_other" android:title="@string/menu_other" />
 </menu>

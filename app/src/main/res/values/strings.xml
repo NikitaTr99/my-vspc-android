@@ -27,4 +27,6 @@
     <string name="nav_open_site_error_toast">The site cannot be opened.</string>
     <string name="hello_discover_fragment" translatable="false">Discover screen</string>
     <string name="menu_discover">Discover</string>
+    <string name="menu_other">Other</string>
+    <!-- TODO: Remove or change this placeholder text -->
 </resources>
