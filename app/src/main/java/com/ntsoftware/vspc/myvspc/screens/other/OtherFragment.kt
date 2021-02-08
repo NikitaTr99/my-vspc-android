@@ -31,7 +31,7 @@ class OtherFragment: Fragment() {
 
         main_activity = activity as MainActivity
 
-        scroll_layout_params = main_activity.scrollLayout.layoutParams as CoordinatorLayout.LayoutParams
+        scroll_layout_params = main_activity.scroll_layout.layoutParams as CoordinatorLayout.LayoutParams
 
         scroll_layout_behavior = scroll_layout_params.behavior as CoordinatorLayout.Behavior<CoordinatorLayout>
 
