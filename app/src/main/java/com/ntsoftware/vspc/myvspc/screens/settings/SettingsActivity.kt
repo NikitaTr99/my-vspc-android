@@ -1,12 +1,16 @@
 package com.ntsoftware.vspc.myvspc.screens.settings
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.google.android.material.appbar.MaterialToolbar
+import com.ntsoftware.vspc.myvspc.BuildConfig
 import com.ntsoftware.vspc.myvspc.R
+import java.net.URI
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -42,6 +46,14 @@ class SettingsActivity : AppCompatActivity() {
     class SettingsFragment: PreferenceFragmentCompat() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_pref, rootKey)
+
+            findPreference("version").summary = "Версия приложения ${BuildConfig.VERSION_NAME}"
+
+            findPreference("settings_contact_developer").setOnPreferenceClickListener {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/Tremper")))
+                true
+            }
+
         }
     }
 

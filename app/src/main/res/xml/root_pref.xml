@@ -1,29 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory app:title="Расписание">
         <ListPreference
             app:title="Семестр"
-            android:summary="%s"
+            android:summary="Сейчас используется семестр: %s"
             android:key="semester"
             android:entries="@array/semester_list"
             android:entryValues="@array/semester_list"
             />
         <ListPreference
             app:title="Группа"
-            android:summary="%s"
+            android:summary="Сейчас используется группа: %s"
             android:key="group"
             android:entries="@array/groups_list"
             android:entryValues="@array/groups_list_values"
             />
         <ListPreference
             app:title="Подгруппа"
-            android:summary="%s"
+            android:summary="Сейчас используется подгруппа: %s"
             android:key="subgroup"
             android:entries="@array/subgroups_list"
             android:entryValues="@array/subgroups_list"
             />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="О приложении">
+        <Preference
+            android:title="Связь с разработчиком"
+            android:summary=""
+            app:key="settings_contact_developer" />
+        <Preference
+            android:summary="Версия приложения "
+            android:key="version"/>
     </PreferenceCategory>
 
 </PreferenceScreen>
