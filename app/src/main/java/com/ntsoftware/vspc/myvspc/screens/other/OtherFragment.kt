@@ -36,7 +36,10 @@ class OtherFragment: Fragment() {
 
         scroll_layout_params = main_activity.scroll_layout.layoutParams as CoordinatorLayout.LayoutParams
 
-        scroll_layout_behavior = scroll_layout_params.behavior as CoordinatorLayout.Behavior<CoordinatorLayout>
+        //TODO Вылеты при повтороном нажатии пункта меню
+        if(scroll_layout_params.behavior != null) {
+            scroll_layout_behavior = scroll_layout_params.behavior as CoordinatorLayout.Behavior<CoordinatorLayout>
+        }
 
         scroll_layout_params.behavior = null
 
