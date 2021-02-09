@@ -1,6 +1,7 @@
 package com.ntsoftware.vspc.myvspc.screens.discover.holders
 
 import android.content.SharedPreferences
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.preference.Preference
@@ -15,6 +16,7 @@ import com.ntsoftware.vspc.myvspc.services.ScheduleService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 class ScheduleHolder(itemView: View): DiscoverHolder(itemView) {
 
@@ -39,14 +41,15 @@ class ScheduleHolder(itemView: View): DiscoverHolder(itemView) {
         val group: String? = preference.getString("group", null)
         val subgroup: String? = preference.getString("subgroup", null)
         val semester: String? = preference.getString("semester", null)
+        val day_of_week: Int = getNumOfDayWeek()
 
-        if (group != null && subgroup != null && semester != null) {
+        if (group != null && subgroup != null && semester != null && day_of_week != -1) {
 
             service_message.text = "Загрузка..."
 
             ScheduleService.getInstance()
                     .jsonApi
-                    .getScheduleDay(group.toInt(), subgroup.toInt(), semester.toInt(), 1/*TODO*/)
+                    .getScheduleDay(group.toInt(), subgroup.toInt(), semester.toInt(), day_of_week)
                     .enqueue(
                             object : Callback<SchDay> {
                                 override fun onResponse(call: Call<SchDay>, response: Response<SchDay>) {
@@ -62,11 +65,23 @@ class ScheduleHolder(itemView: View): DiscoverHolder(itemView) {
                     )
         }
         else {
-            service_message.text = "Перейдите в настройки и выберете группу."
+            service_message.text = "Для отображения расписания необходимо выбрать семестр, группу и подгруппу в настройках."
         }
+    }
 
-
-
+    fun getNumOfDayWeek(): Int {
+        val locale = itemView.context.resources.configuration.locale
+        val day_of_week: Int = Calendar.getInstance(locale).get(Calendar.DAY_OF_WEEK)
+        when(day_of_week) {
+            Calendar.MONDAY -> return 1
+            Calendar.TUESDAY -> return 2
+            Calendar.WEDNESDAY -> return 3
+            Calendar.THURSDAY -> return 4
+            Calendar.FRIDAY -> return 5
+            Calendar.SATURDAY -> return 6
+            Calendar.SUNDAY -> return 7
+            else -> return -1
+        }
     }
 
 }
