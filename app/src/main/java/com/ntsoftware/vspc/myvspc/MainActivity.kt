@@ -19,7 +19,7 @@ class MainActivity: AppCompatActivity() {
 
     private lateinit var toolbar: Toolbar
 
-    private lateinit var nav_controller: NavController
+    lateinit var nav_controller: NavController
 
     lateinit var scroll_layout: CoordinatorLayout
 

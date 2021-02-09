@@ -9,6 +9,8 @@ import android.widget.Toast
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.google.android.material.navigation.NavigationView
 import com.ntsoftware.vspc.myvspc.MainActivity
 import com.ntsoftware.vspc.myvspc.R
@@ -22,7 +24,6 @@ class OtherFragment: Fragment() {
     private lateinit var scroll_layout_behavior: CoordinatorLayout.Behavior<CoordinatorLayout>
 
     private lateinit var main_activity: MainActivity
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root: View = inflater.inflate(R.layout.fragment_other, container, false)
@@ -49,7 +50,7 @@ class OtherFragment: Fragment() {
 
     private val menu_item_selected: NavigationView.OnNavigationItemSelectedListener = NavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-            R.id.nav_settings -> Toast.makeText(context, getString(R.string.nav_in_dev), Toast.LENGTH_SHORT).show()
+            R.id.nav_settings -> main_activity.nav_controller.navigate(R.id.nav_settings_activity)
             R.id.nav_web_home -> openWebSite("https://www.vspc34.ru/")
             R.id.nav_web_enrollee -> openWebSite("https://www.vspc34.ru/index.php?option=com_content&view=category&id=9&Itemid=22")
             R.id.nav_web_student -> openWebSite("https://www.vspc34.ru/index.php?option=com_content&view=category&id=50&Itemid=42")

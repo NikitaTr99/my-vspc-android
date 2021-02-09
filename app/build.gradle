@@ -55,4 +55,6 @@ dependencies {
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01"
 
+    implementation 'com.android.support:preference-v7:23.0.1'
+
 }

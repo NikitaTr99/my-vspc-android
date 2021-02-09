@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="Расписание">
+        <ListPreference
+            app:title="Семестр"
+            android:summary="%s"
+            android:key="semester"
+            android:entries="@array/semester_list"
+            android:entryValues="@array/semester_list"
+            />
+        <ListPreference
+            app:title="Группа"
+            android:summary="%s"
+            android:key="group"
+            android:entries="@array/groups_list"
+            android:entryValues="@array/groups_list_values"
+            />
+        <ListPreference
+            app:title="Подгруппа"
+            android:summary="%s"
+            android:key="subgroup"
+            android:entries="@array/subgroups_list"
+            android:entryValues="@array/subgroups_list"
+            />
+    </PreferenceCategory>
+
+</PreferenceScreen>

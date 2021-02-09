@@ -41,6 +41,11 @@
         tools:layout="@layout/fragment_news_detail"
         android:name="com.ntsoftware.vspc.myvspc.screens.news.detail.NewsDetailActivity"/>
 
+    <activity
+        android:id="@+id/nav_settings_activity"
+        tools:layout="@layout/activity_settings"
+        android:name="com.ntsoftware.vspc.myvspc.screens.settings.SettingsActivity"/>
+
 
 
 </navigation>

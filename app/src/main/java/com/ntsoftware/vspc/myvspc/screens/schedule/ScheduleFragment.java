@@ -1,5 +1,6 @@
 package com.ntsoftware.vspc.myvspc.screens.schedule;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,6 +34,8 @@ public class ScheduleFragment extends Fragment {
 
     RvSchDaysAdapter days_adapter;
 
+    SharedPreferences preferences;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_schedule, container, false);
@@ -46,6 +50,8 @@ public class ScheduleFragment extends Fragment {
 
         sch_recycler.setAdapter(days_adapter);
 
+        preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+
         loadAdapter();
 
         return root;
@@ -53,23 +59,30 @@ public class ScheduleFragment extends Fragment {
 
     private void loadAdapter(){
 
-        List<SimpleNews> simpleNews;
+        String group = preferences.getString("group",null);
+        String subgroup = preferences.getString("subgroup",null);
+        String semester = preferences.getString("semester",null);
 
-        ScheduleService.getInstance()
-                .getJSONApi()
-                .getScheduleWeek(1,2,4)
-                .enqueue(new Callback<SchWeek>() {
-                    @Override
-                    public void onResponse(Call<SchWeek> call, Response<SchWeek> response) {
-                        days_adapter = new RvSchDaysAdapter(response.body().getDays());
-                        sch_recycler.setAdapter(days_adapter);
-                    }
+        if (group != null && subgroup != null && semester != null) {
+            ScheduleService.getInstance()
+                    .getJSONApi()
+                    .getScheduleWeek(Integer.parseInt(group), Integer.parseInt(subgroup), Integer.parseInt(semester))
+                    .enqueue(new Callback<SchWeek>() {
+                        @Override
+                        public void onResponse(Call<SchWeek> call, Response<SchWeek> response) {
+                            days_adapter = new RvSchDaysAdapter(response.body().getDays());
+                            sch_recycler.setAdapter(days_adapter);
+                        }
 
-                    @Override
-                    public void onFailure(Call<SchWeek> call, Throwable t) {
+                        @Override
+                        public void onFailure(Call<SchWeek> call, Throwable t) {
 
-                    }
-                });
+                        }
+                    });
+        }
+        else {
+            //TODO
+        }
     }
 
     @Override
