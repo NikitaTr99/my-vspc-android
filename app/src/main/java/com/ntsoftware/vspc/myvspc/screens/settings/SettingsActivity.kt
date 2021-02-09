@@ -4,9 +4,11 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
 import com.ntsoftware.vspc.myvspc.BuildConfig
 import com.ntsoftware.vspc.myvspc.R
@@ -47,12 +49,12 @@ class SettingsActivity : AppCompatActivity() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_pref, rootKey)
 
-            findPreference("version").summary = "Версия приложения ${BuildConfig.VERSION_NAME}"
-
-            findPreference("settings_contact_developer").setOnPreferenceClickListener {
+            findPreference<Preference>("settings_contact_developer")?.setOnPreferenceClickListener {
                 startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/Tremper")))
                 true
             }
+
+            findPreference<Preference>("version")?.summary = "Версия приложения ${BuildConfig.VERSION_NAME}"
 
         }
     }

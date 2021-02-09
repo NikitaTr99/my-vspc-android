@@ -1,40 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
-    <PreferenceCategory app:title="Расписание">
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        android:title="Расписание">
         <ListPreference
-            app:title="Семестр"
+            android:title="Семестр"
             android:summary="Сейчас используется семестр: %s"
             android:key="semester"
             android:entries="@array/semester_list"
             android:entryValues="@array/semester_list"
+            app:iconSpaceReserved="false"
             />
         <ListPreference
-            app:title="Группа"
+            android:title="Группа"
             android:summary="Сейчас используется группа: %s"
             android:key="group"
             android:entries="@array/groups_list"
             android:entryValues="@array/groups_list_values"
+            app:iconSpaceReserved="false"
             />
         <ListPreference
-            app:title="Подгруппа"
+            android:title="Подгруппа"
             android:summary="Сейчас используется подгруппа: %s"
             android:key="subgroup"
             android:entries="@array/subgroups_list"
             android:entryValues="@array/subgroups_list"
+            app:iconSpaceReserved="false"
             />
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="О приложении">
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        android:title="О приложении">
         <Preference
-            android:title="Связь с разработчиком"
             android:summary=""
+            android:title="Связь с разработчиком"
+            app:iconSpaceReserved="false"
             app:key="settings_contact_developer" />
         <Preference
+            android:key="version"
+            android:selectable="false"
             android:summary="Версия приложения "
-            android:key="version"/>
+            app:iconSpaceReserved="false" />
     </PreferenceCategory>
 
 </PreferenceScreen>
