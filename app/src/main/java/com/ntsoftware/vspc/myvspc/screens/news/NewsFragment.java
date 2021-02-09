@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.ntsoftware.vspc.myvspc.MainActivity;
 import com.ntsoftware.vspc.myvspc.R;
 import com.ntsoftware.vspc.myvspc.services.NewsService;
 import com.ntsoftware.vspc.myvspc.screens.news.model.SimpleNews;
@@ -35,6 +36,10 @@ public class NewsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_news, container, false);
         ButterKnife.bind(this,root);
+
+        if(!((MainActivity)getActivity()).getSupportActionBar().isShowing()) {
+            ((MainActivity)getActivity()).getSupportActionBar().show();
+        }
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.ntsoftware.vspc.myvspc.MainActivity
 import com.ntsoftware.vspc.myvspc.R
 
 class DiscoverFragment: Fragment() {
@@ -21,6 +22,10 @@ class DiscoverFragment: Fragment() {
         recycler_view.layoutManager = LinearLayoutManager(context,RecyclerView.VERTICAL,false)
 
         recycler_view.adapter = DiscoverAdapter()
+
+        if((activity as MainActivity).supportActionBar?.isShowing == false) {
+            (activity as MainActivity).supportActionBar?.show()
+        }
 
         return root
     }

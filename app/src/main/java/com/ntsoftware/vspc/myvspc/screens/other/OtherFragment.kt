@@ -32,6 +32,8 @@ class OtherFragment: Fragment() {
 
         main_activity = activity as MainActivity
 
+        (activity as MainActivity).supportActionBar?.hide()
+
         scroll_layout_params = main_activity.scroll_layout.layoutParams as CoordinatorLayout.LayoutParams
 
         scroll_layout_behavior = scroll_layout_params.behavior as CoordinatorLayout.Behavior<CoordinatorLayout>

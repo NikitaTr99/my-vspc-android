@@ -14,6 +14,7 @@ import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ntsoftware.vspc.myvspc.MainActivity;
 import com.ntsoftware.vspc.myvspc.R;
 import com.ntsoftware.vspc.myvspc.services.ScheduleService;
 import com.ntsoftware.vspc.myvspc.screens.news.model.SimpleNews;
@@ -40,6 +41,11 @@ public class ScheduleFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_schedule, container, false);
         ButterKnife.bind(this,root);
+
+        if(!((MainActivity)getActivity()).getSupportActionBar().isShowing()) {
+            ((MainActivity)getActivity()).getSupportActionBar().show();
+        }
+
         setHasOptionsMenu(true);
 
         days_adapter = new RvSchDaysAdapter();
