@@ -2,8 +2,8 @@
 <layer-list
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:drawable="?attr/colorSurface"/>
+    <item android:drawable="@color/colorPrimary"/>
 
-    <item android:height="250dp" android:width="250dp" android:drawable="@drawable/mvspc_logo_scale_day_night" android:gravity="center"/>
+    <item android:height="169dp" android:width="250dp" android:drawable="@drawable/vspc_logo" android:gravity="center"/>
 
 </layer-list>
