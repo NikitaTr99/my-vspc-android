@@ -10,6 +10,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.textview.MaterialTextView
 
 class MainActivity: AppCompatActivity() {
 
@@ -22,6 +23,10 @@ class MainActivity: AppCompatActivity() {
     lateinit var nav_controller: NavController
 
     lateinit var scroll_layout: CoordinatorLayout
+
+    val status_text_view: MaterialTextView by lazy {
+        findViewById(R.id.screen_status)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
 

@@ -13,6 +13,7 @@ import com.ntsoftware.vspc.myvspc.screens.discover.holders.base.DiscoverHolder
 import com.ntsoftware.vspc.myvspc.screens.schedule.RvSchLessonAdapter
 import com.ntsoftware.vspc.myvspc.screens.schedule.model.SchWeek.SchDay
 import com.ntsoftware.vspc.myvspc.services.ScheduleService
+import com.ntsoftware.vspc.myvspc.storage.ScheduleCache
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,9 +31,12 @@ class ScheduleHolder(itemView: View): DiscoverHolder(itemView) {
 
     private var preference: SharedPreferences
 
+    private var schedule_cache: ScheduleCache
+
     init {
         recycler_view.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         preference = PreferenceManager.getDefaultSharedPreferences(context)
+        schedule_cache = ScheduleCache(itemView.context)
     }
 
     override fun bind() {
@@ -47,29 +51,34 @@ class ScheduleHolder(itemView: View): DiscoverHolder(itemView) {
 
             service_message.text = "Загрузка..."
 
-            ScheduleService.getInstance()
-                    .jsonApi
-                    .getScheduleDay(group.toInt(), subgroup.toInt(), semester.toInt(), day_of_week)
-                    .enqueue(
-                            object : Callback<SchDay> {
-                                override fun onResponse(call: Call<SchDay>, response: Response<SchDay>) {
-                                    service_message.visibility = View.GONE
-                                    recycler_view.adapter = RvSchLessonAdapter(response.body()?.lessons)
-                                }
+            if (schedule_cache.isScheduleSaved()) {
+                service_message.visibility = View.GONE
+                recycler_view.adapter = RvSchLessonAdapter(schedule_cache.getSchWeek().get(getNumOfDayWeek() - 1).lessons)
+            } else {
+                ScheduleService.getInstance()
+                        .jsonApi
+                        .getScheduleDay(group.toInt(), subgroup.toInt(), semester.toInt(), day_of_week)
+                        .enqueue(
+                                object : Callback<SchDay> {
+                                    override fun onResponse(call: Call<SchDay>, response: Response<SchDay>) {
+                                        service_message.visibility = View.GONE
+                                        recycler_view.adapter = RvSchLessonAdapter(response.body()?.lessons)
+                                    }
 
-                                override fun onFailure(call: Call<SchDay>, t: Throwable) {
-                                    service_message.visibility = View.VISIBLE
-                                    service_message.text = "Сервис недоступен."
+                                    override fun onFailure(call: Call<SchDay>, t: Throwable) {
+                                        service_message.visibility = View.VISIBLE
+                                        service_message.text = "Сервис недоступен."
+                                    }
                                 }
-                            }
-                    )
+                        )
+            }
         }
         else {
             service_message.text = "Для отображения расписания необходимо выбрать семестр, группу и подгруппу в настройках."
         }
     }
 
-    fun getNumOfDayWeek(): Int {
+    private fun getNumOfDayWeek(): Int {
         val locale = itemView.context.resources.configuration.locale
         val day_of_week: Int = Calendar.getInstance(locale).get(Calendar.DAY_OF_WEEK)
         when(day_of_week) {

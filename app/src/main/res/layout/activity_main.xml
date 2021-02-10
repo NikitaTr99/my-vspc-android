@@ -11,6 +11,7 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/colorSurface"
         app:elevation="00dp">
 
         <com.ntsoftware.vspc.myvspc.ui.CenteredTitleToolbar
@@ -20,6 +21,16 @@
             android:layout_height="?attr/actionBarSize"
             app:layout_scrollFlags="scroll|enterAlways"
             app:navigationIconTint="?attr/colorOnSurface" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/screen_status"
+            android:padding="4dp"
+            tools:text="Загрузка..."
+            android:visibility="gone"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
