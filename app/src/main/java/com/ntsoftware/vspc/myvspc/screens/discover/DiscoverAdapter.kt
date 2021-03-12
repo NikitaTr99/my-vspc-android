@@ -17,10 +17,10 @@ class DiscoverAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun getItemViewType(position: Int): Int {
         when(position) {
             HolderType.TODAY.ordinal -> return HolderType.TODAY.ordinal
-            HolderType.WEATHER.ordinal -> return HolderType.WEATHER.ordinal
+//            HolderType.WEATHER.ordinal -> return HolderType.WEATHER.ordinal
             HolderType.SCHEDULE.ordinal -> return HolderType.SCHEDULE.ordinal
             HolderType.SIMPLE_NEWS.ordinal -> return HolderType.SIMPLE_NEWS.ordinal
-            else -> return 0
+            else -> return -1
         }
     }
 

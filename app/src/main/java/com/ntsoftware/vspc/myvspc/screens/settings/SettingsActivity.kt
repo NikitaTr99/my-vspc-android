@@ -4,15 +4,16 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
 import com.ntsoftware.vspc.myvspc.BuildConfig
 import com.ntsoftware.vspc.myvspc.R
-import java.net.URI
+import com.ntsoftware.vspc.myvspc.screens.schedule.ScheduleViewModel
+import com.ntsoftware.vspc.myvspc.storage.ScheduleCache
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -49,6 +50,21 @@ class SettingsActivity : AppCompatActivity() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_pref, rootKey)
 
+            findPreference<Preference>("semester")?.setOnPreferenceChangeListener { preference, newValue ->
+                context?.let { ScheduleCache(it).setScheduleNeedReload(true) }
+                true
+            }
+
+            findPreference<Preference>("group")?.setOnPreferenceChangeListener { preference, newValue ->
+                context?.let { ScheduleCache(it).setScheduleNeedReload(true) }
+                true
+            }
+
+            findPreference<Preference>("subgroup")?.setOnPreferenceChangeListener { preference, newValue ->
+                context?.let { ScheduleCache(it).setScheduleNeedReload(true) }
+                true
+            }
+
             findPreference<Preference>("settings_contact_developer")?.setOnPreferenceClickListener {
                 startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/Tremper")))
                 true
@@ -58,5 +74,4 @@ class SettingsActivity : AppCompatActivity() {
 
         }
     }
-
 }

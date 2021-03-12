@@ -6,6 +6,7 @@ import com.ntsoftware.vspc.myvspc.screens.schedule.model.SchWeek
 
 const val SHARPREF_NAME = "appdata"
 const val SHARPREF_APPDATA_SCHEDULE = "appdata_schedule"
+const val SHARPREF_APPDATA_SCHEDULE_NEED = "appdata_schedule_need_reload"
 
 class ScheduleCache(val context: Context) {
 
@@ -27,11 +28,28 @@ class ScheduleCache(val context: Context) {
         return ArrayList()
     }
 
+    fun cleanSchWeek()  {
+        val editor = preferences.edit()
+        editor.remove(SHARPREF_APPDATA_SCHEDULE)
+        editor.apply()
+    }
+
     fun isScheduleSaved(): Boolean {
         return preferences.contains(SHARPREF_APPDATA_SCHEDULE)
     }
 
+    fun setScheduleNeedReload(need: Boolean) {
+        val editor = preferences.edit()
+        editor.putBoolean(SHARPREF_APPDATA_SCHEDULE_NEED, need)
+        editor.apply()
+    }
 
+    fun isScheduleNeedReload(): Boolean {
+        if (preferences.contains(SHARPREF_APPDATA_SCHEDULE_NEED)){
+            return preferences.getBoolean(SHARPREF_APPDATA_SCHEDULE_NEED, true)
+        }
+        else return false;
+    }
 
 
 

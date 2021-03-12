@@ -35,6 +35,7 @@ class ScheduleHolder(itemView: View): DiscoverHolder(itemView) {
 
     init {
         recycler_view.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        recycler_view.adapter = lesson_adapter
         preference = PreferenceManager.getDefaultSharedPreferences(context)
         schedule_cache = ScheduleCache(itemView.context)
     }
@@ -53,7 +54,12 @@ class ScheduleHolder(itemView: View): DiscoverHolder(itemView) {
 
             if (schedule_cache.isScheduleSaved()) {
                 service_message.visibility = View.GONE
-                recycler_view.adapter = RvSchLessonAdapter(schedule_cache.getSchWeek().get(getNumOfDayWeek() - 1).lessons)
+
+                val week = schedule_cache.getSchWeek()
+
+                if (week.size > 0) {
+                    lesson_adapter.addItems(schedule_cache.getSchWeek().get(getNumOfDayWeek() - 1).lessons)
+                }
             } else {
                 ScheduleService.getInstance()
                         .jsonApi
@@ -62,7 +68,9 @@ class ScheduleHolder(itemView: View): DiscoverHolder(itemView) {
                                 object : Callback<SchDay> {
                                     override fun onResponse(call: Call<SchDay>, response: Response<SchDay>) {
                                         service_message.visibility = View.GONE
-                                        recycler_view.adapter = RvSchLessonAdapter(response.body()?.lessons)
+                                        if (response.body()?.lessons != null) {
+                                            lesson_adapter.addItems(response.body()?.lessons)
+                                        }
                                     }
 
                                     override fun onFailure(call: Call<SchDay>, t: Throwable) {

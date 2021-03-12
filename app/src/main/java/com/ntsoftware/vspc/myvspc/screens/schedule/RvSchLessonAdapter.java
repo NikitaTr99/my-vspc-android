@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ntsoftware.vspc.myvspc.R;
 import com.ntsoftware.vspc.myvspc.screens.schedule.model.LessonDetail;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -24,6 +25,7 @@ public class RvSchLessonAdapter extends RecyclerView.Adapter<RvSchLessonAdapter.
     List<LessonDetail> lessons;
 
     public RvSchLessonAdapter() {
+        lessons = new ArrayList<>();
     }
 
     public RvSchLessonAdapter(List<LessonDetail> lessons) {
@@ -54,6 +56,11 @@ public class RvSchLessonAdapter extends RecyclerView.Adapter<RvSchLessonAdapter.
         holder.lesson_break.setText(lessonDetail.get_break() + "мин");
         holder.lesson_break.setVisibility(View.GONE);
 
+    }
+
+    public void addItems(List<LessonDetail> lessons) {
+        this.lessons.addAll(lessons);
+        this.notifyDataSetChanged();
     }
 
     @Override

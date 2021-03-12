@@ -29,6 +29,11 @@ public class RvSchDaysAdapter extends RecyclerView.Adapter<RvSchDaysAdapter.SchD
         days = new ArrayList<>();
     }
 
+    public RvSchDaysAdapter(Context context) {
+        days = new ArrayList<>();
+        this.context = context;
+    }
+
     public RvSchDaysAdapter(List<SchWeek.SchDay> days) {
         this.days = days;
     }
@@ -36,7 +41,6 @@ public class RvSchDaysAdapter extends RecyclerView.Adapter<RvSchDaysAdapter.SchD
     @NonNull
     @Override
     public SchDayViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        context = parent.getContext();
 
         View view = LayoutInflater.from(context).inflate(R.layout.rv_item_schedule_day, parent,false);
 
@@ -54,6 +58,27 @@ public class RvSchDaysAdapter extends RecyclerView.Adapter<RvSchDaysAdapter.SchD
     @Override
     public int getItemCount() {
         return days.size();
+    }
+
+    public void replaceItems(List<SchWeek.SchDay> days) {
+        this.days.clear();
+        this.days.addAll(days);
+        this.notifyDataSetChanged();
+    }
+
+    public void addItems(List<SchWeek.SchDay> days) {
+        this.days.addAll(days);
+        this.notifyDataSetChanged();
+    }
+
+    public void addItem(SchWeek.SchDay day) {
+        days.add(day);
+        this.notifyDataSetChanged();
+    }
+
+    public void clearItems() {
+        days.clear();
+        this.notifyDataSetChanged();
     }
 
     public class SchDayViewHolder extends RecyclerView.ViewHolder {

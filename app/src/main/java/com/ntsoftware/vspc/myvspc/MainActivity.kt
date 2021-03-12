@@ -1,7 +1,6 @@
 package com.ntsoftware.vspc.myvspc
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -11,6 +10,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.textview.MaterialTextView
+import com.ntsoftware.vspc.myvspc.storage.ScheduleCache
 
 class MainActivity: AppCompatActivity() {
 
@@ -23,6 +23,8 @@ class MainActivity: AppCompatActivity() {
     lateinit var nav_controller: NavController
 
     lateinit var scroll_layout: CoordinatorLayout
+
+    lateinit var schedule_cache: ScheduleCache
 
     val status_text_view: MaterialTextView by lazy {
         findViewById(R.id.screen_status)
@@ -45,7 +47,7 @@ class MainActivity: AppCompatActivity() {
 
     private fun setupNavigation() {
         app_bar_config = AppBarConfiguration.Builder(
-                R.id.nav_discover,R.id.nav_news, R.id.nav_schedule, R.id.nav_other)
+                R.id.nav_discover, R.id.nav_news, R.id.nav_schedule, R.id.nav_other)
                 .build()
 
         nav_controller = Navigation.findNavController(this, R.id.nav_host_fragment)
@@ -60,6 +62,7 @@ class MainActivity: AppCompatActivity() {
         scroll_layout = findViewById(R.id.scroll_layout)
         navigation_view = findViewById(R.id.bottom_nav)
         toolbar = findViewById(R.id.toolbar)
+        schedule_cache = ScheduleCache(this)
     }
 
 }
