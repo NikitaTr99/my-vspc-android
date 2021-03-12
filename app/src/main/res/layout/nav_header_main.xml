@@ -2,14 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
-    android:layout_height="100dp"
+    android:layout_height="250dp"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/mvspc_logo_day_night"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/vspc_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -2,8 +2,8 @@
 <resources>
     <string name="app_name">Мой ВСПК</string>
     <string name="action_settings">Настройки</string>
-    <string name="menu_news">Новости</string>
-    <string name="menu_schedule">Расписание</string>
+    <string name="menu_instagram">Instagram</string>
+    <string name="menu_youtube">YouTube</string>
     <string name="menu_slideshow">Слайдшоу</string>
     <string name="nav_site_home">Домашняя страница</string>
     <string name="nav_site_enrollee">Абитуриенту</string>
@@ -18,7 +18,11 @@
     <string name="schedule_menu_action_title_update">Обновить</string>
     <string name="nav_in_dev">В разработке</string>
     <string name="nav_open_site_error_toast">Невозможно открыть сайт.</string>
-    <string name="menu_discover">Обзор</string>
+    <string name="menu_vk">ВКонтакте</string>
     <string name="menu_other">Прочее</string>
     <string name="discover_info_today">Сегодня</string>
+    <string name="nav_social_title">Социальные</string>
+    <string name="menu_discover">Обзор</string>
+    <string name="menu_news">Новости</string>
+    <string name="menu_schedule">Расписание</string>
 </resources>

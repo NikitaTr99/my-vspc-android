@@ -47,7 +47,7 @@ class MainActivity: AppCompatActivity() {
 
     private fun setupNavigation() {
         app_bar_config = AppBarConfiguration.Builder(
-                R.id.nav_discover, R.id.nav_news, R.id.nav_schedule, R.id.nav_other)
+                R.id.nav_vk, R.id.nav_instagram, R.id.nav_youtube, R.id.nav_other)
                 .build()
 
         nav_controller = Navigation.findNavController(this, R.id.nav_host_fragment)

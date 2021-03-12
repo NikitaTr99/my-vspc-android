@@ -3,12 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:id="@+id/nav_main_pages" android:checkableBehavior="single">
-        <item android:id="@+id/nav_discover" android:icon="@drawable/ic_discover" android:title="@string/menu_discover" />
-        <item android:id="@+id/nav_news" android:icon="@drawable/ic_news" android:title="@string/menu_news" />
-        <item android:id="@+id/nav_schedule" android:icon="@drawable/ic_schedule" android:title="@string/menu_schedule" />
-    </group>
-
     <group android:id="@+id/nav_web_actions" android:checkableBehavior="none">
         <item android:title="@string/nav_web_title">
             <menu>
@@ -16,6 +10,16 @@
                 <item android:id="@+id/nav_web_enrollee" android:title="@string/nav_site_enrollee" android:icon="@drawable/ic_web"/>
                 <item android:id="@+id/nav_web_student" android:title="@string/nav_site_student" android:icon="@drawable/ic_web"/>
                 <item android:id="@+id/nav_web_about" android:title="@string/nav_site_about" android:icon="@drawable/ic_web"/>
+            </menu>
+        </item>
+    </group>
+
+    <group android:id="@+id/nav_social_pages" android:checkableBehavior="none">
+        <item android:title="@string/nav_social_title">
+            <menu>
+                <item android:id="@+id/nav_vk" android:icon="@drawable/ic_vk_compact_logo" android:title="@string/menu_vk" />
+                <item android:id="@+id/nav_instagram" android:icon="@drawable/ic_instagram_logo" android:title="@string/menu_instagram" />
+                <item android:id="@+id/nav_youtube" android:icon="@drawable/ic_youtube_logo" android:title="@string/menu_youtube" />
             </menu>
         </item>
     </group>

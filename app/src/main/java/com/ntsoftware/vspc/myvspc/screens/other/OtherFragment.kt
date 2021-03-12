@@ -55,11 +55,18 @@ class OtherFragment: Fragment() {
 
     private val menu_item_selected: NavigationView.OnNavigationItemSelectedListener = NavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
+
             R.id.nav_settings -> main_activity.nav_controller.navigate(R.id.nav_settings_activity)
+
             R.id.nav_web_home -> openWebSite("https://www.vspc34.ru/")
             R.id.nav_web_enrollee -> openWebSite("https://www.vspc34.ru/index.php?option=com_content&view=category&id=9&Itemid=22")
             R.id.nav_web_student -> openWebSite("https://www.vspc34.ru/index.php?option=com_content&view=category&id=50&Itemid=42")
             R.id.nav_web_about -> openWebSite("https://www.vspc34.ru/index.php?option=com_content&view=category&id=104&Itemid=152")
+
+            R.id.nav_vk -> openWebSite("https://vk.com/true_vspc34")
+            R.id.nav_instagram -> openWebSite("https://www.instagram.com/vspcinst")
+            R.id.nav_youtube -> openWebSite("https://www.youtube.com/channel/UCuzlglODRI-VG4Qhu58tmRQ")
+
             else -> Toast.makeText(context, "No support", Toast.LENGTH_SHORT).show()
         }
         false
