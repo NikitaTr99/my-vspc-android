@@ -41,6 +41,8 @@ public class NewsFragment extends Fragment {
             ((MainActivity)getActivity()).getSupportActionBar().show();
         }
 
+        ((MainActivity)getActivity()).needBehavior(true);
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
@@ -49,6 +51,7 @@ public class NewsFragment extends Fragment {
         swipeRefreshLayout.setOnRefreshListener(() -> {
             loadNews();
         });
+
 
         loadNews();
 

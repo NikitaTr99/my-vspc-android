@@ -27,6 +27,8 @@ class DiscoverFragment: Fragment() {
             (activity as MainActivity).supportActionBar?.show()
         }
 
+        (activity as MainActivity).needBehavior(true)
+
         return root
     }
 

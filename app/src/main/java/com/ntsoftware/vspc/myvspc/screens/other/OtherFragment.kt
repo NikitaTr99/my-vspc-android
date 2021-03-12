@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.view.marginTop
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -21,8 +22,6 @@ class OtherFragment: Fragment() {
 
     private lateinit var scroll_layout_params: CoordinatorLayout.LayoutParams
 
-    private lateinit var scroll_layout_behavior: CoordinatorLayout.Behavior<CoordinatorLayout>
-
     private lateinit var main_activity: MainActivity
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -34,23 +33,11 @@ class OtherFragment: Fragment() {
 
         (activity as MainActivity).supportActionBar?.hide()
 
-        scroll_layout_params = main_activity.scroll_layout.layoutParams as CoordinatorLayout.LayoutParams
-
-        //TODO Вылеты при повтороном нажатии пункта меню
-        if(scroll_layout_params.behavior != null) {
-            scroll_layout_behavior = scroll_layout_params.behavior as CoordinatorLayout.Behavior<CoordinatorLayout>
-        }
-
-        scroll_layout_params.behavior = null
-
         navigation_view.setNavigationItemSelectedListener(menu_item_selected)
 
-        return root
-    }
+        main_activity.needBehavior(false)
 
-    override fun onStop() {
-        super.onStop()
-        scroll_layout_params.behavior = scroll_layout_behavior
+        return root
     }
 
     private val menu_item_selected: NavigationView.OnNavigationItemSelectedListener = NavigationView.OnNavigationItemSelectedListener { item ->

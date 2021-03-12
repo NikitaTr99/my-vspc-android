@@ -24,7 +24,9 @@ class MainActivity: AppCompatActivity() {
 
     lateinit var scroll_layout: CoordinatorLayout
 
-    lateinit var schedule_cache: ScheduleCache
+    lateinit var scroll_layout_params: CoordinatorLayout.LayoutParams
+
+    lateinit var scroll_layout_behavior: CoordinatorLayout.Behavior<CoordinatorLayout>
 
     val status_text_view: MaterialTextView by lazy {
         findViewById(R.id.screen_status)
@@ -62,7 +64,22 @@ class MainActivity: AppCompatActivity() {
         scroll_layout = findViewById(R.id.scroll_layout)
         navigation_view = findViewById(R.id.bottom_nav)
         toolbar = findViewById(R.id.toolbar)
-        schedule_cache = ScheduleCache(this)
+
+        scroll_layout_params = scroll_layout.layoutParams as CoordinatorLayout.LayoutParams
+
+        if(scroll_layout_params.behavior != null) {
+            scroll_layout_behavior = scroll_layout_params.behavior as CoordinatorLayout.Behavior<CoordinatorLayout>
+        }
+
+    }
+
+    public fun needBehavior(on: Boolean) {
+        if(on) {
+            scroll_layout_params.behavior = scroll_layout_behavior
+        }
+        else {
+            scroll_layout_params.behavior = null
+        }
     }
 
 }

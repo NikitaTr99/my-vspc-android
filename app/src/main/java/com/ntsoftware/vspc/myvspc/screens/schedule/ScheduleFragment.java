@@ -51,6 +51,8 @@ public class ScheduleFragment extends Fragment {
 
         }
 
+        ((MainActivity)getActivity()).needBehavior(true);
+
         init();
 
         model.getSchDays().observe(getViewLifecycleOwner(), days -> days_adapter.replaceItems(days));
