@@ -81,6 +81,11 @@
         <item name="android:paddingRight">1dp</item>
     </style>
 
+    <style name="LessonCard">
+        <item name="cardBackgroundColor">@color/colorLessonCardLight</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
 
     <style name="Widget.MaterialComponents.NavigationView.DrawerNavigation">
     </style>

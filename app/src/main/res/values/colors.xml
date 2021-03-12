@@ -29,4 +29,10 @@
     <color name="colorPrimaryGradDark">#2847E2</color>
     <color name="colorAccentGradLight">#F7E131</color>
     <color name="colorAccentGradDark">#C2302E</color>
+
+    <color name="colorLessonCardLight">#F6F6F6</color>
+    <color name="colorOnLessonCardLight">#000000</color>
+
+    <color name="colorLessonCardDark">#121212</color>
+    <color name="colorOnLessonCardDark">#FFFFFF</color>
 </resources>
