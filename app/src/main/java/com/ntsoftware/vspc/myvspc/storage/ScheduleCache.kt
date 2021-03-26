@@ -3,6 +3,8 @@ package com.ntsoftware.vspc.myvspc.storage
 import android.content.Context
 import com.google.gson.Gson
 import com.ntsoftware.vspc.myvspc.screens.schedule.model.SchWeek
+import com.ntsoftware.vspc.myvspc.screens.schedule.model.ScheduleDay
+import com.ntsoftware.vspc.myvspc.screens.schedule.model.ScheduleLesson
 
 const val SHARPREF_NAME = "appdata"
 const val SHARPREF_APPDATA_SCHEDULE = "appdata_schedule"
@@ -14,16 +16,16 @@ class ScheduleCache(val context: Context) {
         context.getSharedPreferences(SHARPREF_NAME, Context.MODE_PRIVATE)
     }
 
-    fun saveSchWeek(sch: List<SchWeek.SchDay>) {
+    fun saveSchWeek(sch: Collection<ScheduleDay>) {
         val editor = preferences.edit()
         editor.putString(SHARPREF_APPDATA_SCHEDULE, Gson().toJson(sch))
         editor.apply()
     }
 
-    fun getSchWeek() : List<SchWeek.SchDay> {
+    fun getSchWeek() : Collection<ScheduleDay> {
         val json: String? = preferences.getString(SHARPREF_APPDATA_SCHEDULE, null)
         if(json != null) {
-            return Gson().fromJson(json,Array<SchWeek.SchDay>::class.java).toList()
+            return Gson().fromJson(json, Array<ScheduleDay>::class.java).toList()
         }
         return ArrayList()
     }

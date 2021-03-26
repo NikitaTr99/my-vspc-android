@@ -12,8 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ntsoftware.vspc.myvspc.R;
 import com.ntsoftware.vspc.myvspc.screens.schedule.model.SchWeek;
+import com.ntsoftware.vspc.myvspc.screens.schedule.model.ScheduleDay;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import butterknife.BindView;
@@ -23,7 +25,7 @@ public class RvSchDaysAdapter extends RecyclerView.Adapter<RvSchDaysAdapter.SchD
 
     Context context;
 
-    List<SchWeek.SchDay> days;
+    List<ScheduleDay> days;
 
     public RvSchDaysAdapter() {
         days = new ArrayList<>();
@@ -34,7 +36,7 @@ public class RvSchDaysAdapter extends RecyclerView.Adapter<RvSchDaysAdapter.SchD
         this.context = context;
     }
 
-    public RvSchDaysAdapter(List<SchWeek.SchDay> days) {
+    public RvSchDaysAdapter(List<ScheduleDay> days) {
         this.days = days;
     }
 
@@ -49,10 +51,26 @@ public class RvSchDaysAdapter extends RecyclerView.Adapter<RvSchDaysAdapter.SchD
 
     @Override
     public void onBindViewHolder(@NonNull SchDayViewHolder holder, int position) {
-        holder.name_of_day.setText(days.get(position).getName_day_of_week());
 
-        holder.lessons_recycler.setAdapter(new RvSchLessonAdapter(days.get(position).getLessons()));
+        ScheduleDay day = days.get(position);
 
+        holder.name_of_day.setText(getNameOfDayByTag(day.getTag()));
+
+        holder.lessons_recycler.setAdapter(new RvSchLessonAdapter(day.getLessons()));
+
+    }
+
+    public String getNameOfDayByTag(int tag) {
+        switch (tag) {
+            case 1: return "Понедельник";
+            case 2: return "Вторник";
+            case 3: return "Среда";
+            case 4: return "Четверг";
+            case 5: return "Пятница";
+            case 6: return "Суббота";
+            case 7: return "Воскресение";
+            default: return "";
+        }
     }
 
     @Override
@@ -60,19 +78,14 @@ public class RvSchDaysAdapter extends RecyclerView.Adapter<RvSchDaysAdapter.SchD
         return days.size();
     }
 
-    public void replaceItems(List<SchWeek.SchDay> days) {
+    public void replaceItems(Collection<ScheduleDay> days) {
         this.days.clear();
         this.days.addAll(days);
         this.notifyDataSetChanged();
     }
 
-    public void addItems(List<SchWeek.SchDay> days) {
+    public void addItems(Collection<ScheduleDay> days) {
         this.days.addAll(days);
-        this.notifyDataSetChanged();
-    }
-
-    public void addItem(SchWeek.SchDay day) {
-        days.add(day);
         this.notifyDataSetChanged();
     }
 

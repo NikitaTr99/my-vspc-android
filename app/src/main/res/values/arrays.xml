@@ -13,10 +13,12 @@
 
     <string-array name="groups_list">
         <item>32Д</item>
+        <item>1А</item>
     </string-array>
 
     <string-array name="groups_list_values">
         <item>1</item>
+        <item>2</item>
     </string-array>
 
     <string-array name="subgroups_list">

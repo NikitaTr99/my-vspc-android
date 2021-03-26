@@ -11,8 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ntsoftware.vspc.myvspc.R;
 import com.ntsoftware.vspc.myvspc.screens.schedule.model.LessonDetail;
+import com.ntsoftware.vspc.myvspc.screens.schedule.model.ScheduleDay;
+import com.ntsoftware.vspc.myvspc.screens.schedule.model.ScheduleLesson;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import butterknife.BindView;
@@ -22,14 +25,14 @@ public class RvSchLessonAdapter extends RecyclerView.Adapter<RvSchLessonAdapter.
 
     Context context;
 
-    List<LessonDetail> lessons;
+    List<ScheduleLesson> lessons;
 
     public RvSchLessonAdapter() {
         lessons = new ArrayList<>();
     }
 
-    public RvSchLessonAdapter(List<LessonDetail> lessons) {
-        this.lessons = lessons;
+    public RvSchLessonAdapter(Collection<ScheduleLesson> lessons) {
+        this.lessons = (List<ScheduleLesson>) lessons;
     }
 
     @NonNull
@@ -43,22 +46,22 @@ public class RvSchLessonAdapter extends RecyclerView.Adapter<RvSchLessonAdapter.
     @Override
     public void onBindViewHolder(@NonNull SchLessonViewHolder holder, int position) {
 
-        LessonDetail lessonDetail = lessons.get(position);
+        ScheduleLesson lesson = lessons.get(position);
 
-        holder.lesson_name.setText(lessonDetail.getName());
+        holder.lesson_name.setText(lesson.getName());
 
-        holder.lesson_detail.setText(lessonDetail.getType() + ", " + lessonDetail.getTeacher() + ", " + lessonDetail.getAudience());
+        holder.lesson_detail.setText(lesson.getType() + ", " + lesson.getTeacher() + ", " + lesson.getAudience());
 
-        holder.lesson_start.setText(lessonDetail.getStart());
+        holder.lesson_start.setText(lesson.getStart());
 
-        holder.lesson_end.setText(lessonDetail.getEnd());
+        holder.lesson_end.setText(lesson.getEnd());
 
-        holder.lesson_break.setText(lessonDetail.get_break() + "мин");
+        holder.lesson_break.setText(lesson.get_break() + "мин");
         holder.lesson_break.setVisibility(View.GONE);
 
     }
 
-    public void addItems(List<LessonDetail> lessons) {
+    public void addItems(List<ScheduleLesson> lessons) {
         this.lessons.addAll(lessons);
         this.notifyDataSetChanged();
     }

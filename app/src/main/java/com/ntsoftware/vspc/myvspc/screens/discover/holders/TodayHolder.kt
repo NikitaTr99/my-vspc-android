@@ -14,6 +14,6 @@ class TodayHolder(itemView: View): DiscoverHolder(itemView) {
 
     override fun bind() {
         val locale = itemView.context.resources.configuration.locale
-        info_text.text = SimpleDateFormat("EEEE, dd MMMM",locale).format(Date()).capitalize()
+        info_text.text = SimpleDateFormat("EEEE dd MMMM",locale).format(Date()).capitalize()
     }
 }
