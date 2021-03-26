@@ -30,7 +30,7 @@ import retrofit2.Response;
 
 public class ScheduleViewModel extends AndroidViewModel {
 
-    private MutableLiveData<Collection<ScheduleDay>> schedule_days_live_data;
+    private MutableLiveData<ScheduleWeek> schedule_days_live_data;
 
     ScheduleCache schedule_cache;
 
@@ -39,7 +39,7 @@ public class ScheduleViewModel extends AndroidViewModel {
         schedule_cache = new ScheduleCache(getApplication());
     }
 
-    public LiveData<Collection<ScheduleDay>> getSchDays() {
+    public LiveData<ScheduleWeek> getSchDays() {
 
         if (schedule_days_live_data == null) {
             schedule_days_live_data = new MutableLiveData<>();
@@ -73,8 +73,8 @@ public class ScheduleViewModel extends AndroidViewModel {
                         .enqueue(new Callback<ScheduleWeek>() {
                             @Override
                             public void onResponse(@NotNull Call<ScheduleWeek> call, @NotNull Response<ScheduleWeek> response) {
-                                schedule_days_live_data.postValue(response.body().getDays());
-                                schedule_cache.saveSchWeek(response.body().getDays());
+                                schedule_days_live_data.postValue(response.body());
+                                schedule_cache.saveSchWeek(response.body());
                                 schedule_cache.setScheduleNeedReload(false);
                             }
 
@@ -86,7 +86,7 @@ public class ScheduleViewModel extends AndroidViewModel {
             } catch (Exception e) {
                 if (group == null || subgroup == null || semester == null) {
                     Log.e("ScheduleViewModel", "Preferences is empty");
-                    schedule_days_live_data.postValue(new ArrayList<>());
+                    schedule_days_live_data.postValue(new ScheduleWeek());
                 }
             }
         }

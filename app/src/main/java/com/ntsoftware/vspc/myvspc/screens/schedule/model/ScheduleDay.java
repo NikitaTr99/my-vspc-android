@@ -2,6 +2,7 @@ package com.ntsoftware.vspc.myvspc.screens.schedule.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class ScheduleDay {
 
@@ -28,6 +29,10 @@ public class ScheduleDay {
 
     public Collection<ScheduleLesson> getLessons() {
         return lessons;
+    }
+
+    public List<ScheduleLesson> getLessonsList() {
+        return (List<ScheduleLesson>) lessons;
     }
 
     public void setLessons(Collection<ScheduleLesson> lessons) {

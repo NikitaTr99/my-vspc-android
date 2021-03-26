@@ -1,6 +1,7 @@
 package com.ntsoftware.vspc.myvspc.services.api;
 
 import com.ntsoftware.vspc.myvspc.screens.schedule.model.SchWeek;
+import com.ntsoftware.vspc.myvspc.screens.schedule.model.ScheduleDay;
 import com.ntsoftware.vspc.myvspc.screens.schedule.model.ScheduleWeek;
 
 import retrofit2.Call;
@@ -20,8 +21,8 @@ public interface JSONScheduleApi {
                                        @Query("api") int api);
 
     @GET("/schedule/getd")
-    Call<SchWeek.SchDay> getScheduleDay(@Query("group") int group,
-                                  @Query("subgroup") int subgroup,
-                                  @Query("semester") int semester,
-                                  @Query("day") int day);
+    Call<ScheduleDay> getScheduleDay(@Query("group") int group,
+                                     @Query("subgroup") int subgroup,
+                                     @Query("semester") int semester,
+                                     @Query("day") int day);
 }

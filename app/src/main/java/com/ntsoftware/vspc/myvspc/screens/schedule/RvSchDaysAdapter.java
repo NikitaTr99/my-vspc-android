@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ntsoftware.vspc.myvspc.R;
 import com.ntsoftware.vspc.myvspc.screens.schedule.model.SchWeek;
 import com.ntsoftware.vspc.myvspc.screens.schedule.model.ScheduleDay;
+import com.ntsoftware.vspc.myvspc.screens.schedule.model.ScheduleWeek;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -33,6 +34,11 @@ public class RvSchDaysAdapter extends RecyclerView.Adapter<RvSchDaysAdapter.SchD
 
     public RvSchDaysAdapter(Context context) {
         days = new ArrayList<>();
+        this.context = context;
+    }
+
+    public RvSchDaysAdapter(Context context, ScheduleWeek week) {
+        days = week.getDaysList();
         this.context = context;
     }
 
@@ -84,8 +90,9 @@ public class RvSchDaysAdapter extends RecyclerView.Adapter<RvSchDaysAdapter.SchD
         this.notifyDataSetChanged();
     }
 
-    public void addItems(Collection<ScheduleDay> days) {
-        this.days.addAll(days);
+    public void replaceItems(ScheduleWeek week) {
+        this.days.clear();
+        this.days.addAll(week.getDays());
         this.notifyDataSetChanged();
     }
 

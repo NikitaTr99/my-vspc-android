@@ -12,6 +12,9 @@ import com.ntsoftware.vspc.myvspc.R
 import com.ntsoftware.vspc.myvspc.screens.discover.holders.base.DiscoverHolder
 import com.ntsoftware.vspc.myvspc.screens.schedule.RvSchLessonAdapter
 import com.ntsoftware.vspc.myvspc.screens.schedule.model.SchWeek.SchDay
+import com.ntsoftware.vspc.myvspc.screens.schedule.model.ScheduleDay
+import com.ntsoftware.vspc.myvspc.screens.schedule.model.ScheduleLesson
+import com.ntsoftware.vspc.myvspc.screens.schedule.model.ScheduleWeek
 import com.ntsoftware.vspc.myvspc.services.ScheduleService
 import com.ntsoftware.vspc.myvspc.storage.ScheduleCache
 import retrofit2.Call
@@ -41,55 +44,56 @@ class ScheduleHolder(itemView: View): DiscoverHolder(itemView) {
     }
 
     override fun bind() {
-//        service_message.visibility = View.VISIBLE
-//
-//        val group: String? = preference.getString("group", null)
-//        val subgroup: String? = preference.getString("subgroup", null)
-//        val semester: String? = preference.getString("semester", null)
-//        val day_of_week: Int = getNumOfDayWeek()
-//
-//        if (group != null && subgroup != null && semester != null && day_of_week != -1) {
-//
-//            service_message.text = "Загрузка..."
-//
-//            if (schedule_cache.isScheduleSaved()) {
-//
-//                service_message.visibility = View.GONE
-//
-//                val week = schedule_cache.getSchWeek()
-//
-//                if (week.size > 0) {
-//                    //TODO Не подходит к кажому расписанию (ТУПОЕ РЕШЕНИЕ)
-//                        try {
-//                            lesson_adapter.addItems(schedule_cache.getSchWeek().get(getNumOfDayWeek() - 1).lessons)
-//                        } catch (e: Exception) {
-//                            root.visibility = View.GONE
-//                        }
-//                }
-//            } else {
-//                ScheduleService.getInstance()
-//                        .jsonApi
-//                        .getScheduleDay(group.toInt(), subgroup.toInt(), semester.toInt(), day_of_week)
-//                        .enqueue(
-//                                object : Callback<SchDay> {
-//                                    override fun onResponse(call: Call<SchDay>, response: Response<SchDay>) {
-//                                        service_message.visibility = View.GONE
-//                                        if (response.body()?.lessons != null) {
-//                                            lesson_adapter.addItems(response.body()?.lessons)
-//                                        }
-//                                    }
-//
-//                                    override fun onFailure(call: Call<SchDay>, t: Throwable) {
-//                                        service_message.visibility = View.VISIBLE
-//                                        service_message.text = "Сервис недоступен."
-//                                    }
-//                                }
-//                        )
-//            }
-//        }
-//        else {
-//            service_message.text = "Для отображения расписания необходимо выбрать семестр, группу и подгруппу в настройках."
-//        }
+        service_message.visibility = View.VISIBLE
+
+        val group: String? = preference.getString("group", null)
+        val subgroup: String? = preference.getString("subgroup", null)
+        val semester: String? = preference.getString("semester", null)
+
+        if (group != null && subgroup != null && semester != null) {
+
+            service_message.text = "Загрузка..."
+
+            if (schedule_cache.isScheduleSaved()) {
+
+                service_message.visibility = View.GONE
+
+                val week = schedule_cache.getSchWeek()
+
+                val day = week.getDayByTag(getNumOfDayWeek())
+
+                if (day != null) {
+                    lesson_adapter.addItems(day.lessonsList)
+                }
+                else {
+                    service_message.visibility = View.VISIBLE
+                    service_message.text = "Сегодня уроков нет"
+                }
+
+            } else {
+                ScheduleService.getInstance()
+                        .jsonApi
+                        .getScheduleDay(group.toInt(), subgroup.toInt(), semester.toInt(), getNumOfDayWeek())
+                        .enqueue(
+                                object : Callback<ScheduleDay> {
+                                    override fun onResponse(call: Call<ScheduleDay>, response: Response<ScheduleDay>) {
+                                        service_message.visibility = View.GONE
+                                        if (response.body()?.lessons != null) {
+                                            lesson_adapter.addItems(response.body()?.lessonsList)
+                                        }
+                                    }
+
+                                    override fun onFailure(call: Call<ScheduleDay>, t: Throwable) {
+                                        service_message.visibility = View.VISIBLE
+                                        service_message.text = "Сервис недоступен."
+                                    }
+                                }
+                        )
+            }
+        }
+        else {
+            service_message.text = "Для отображения расписания необходимо выбрать семестр, группу и подгруппу в настройках."
+        }
     }
 
     private fun getNumOfDayWeek(): Int {
