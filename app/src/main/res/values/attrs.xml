@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <attr name="colorStateNavigationViewDrawer" format="color"/>
+
+    <declare-styleable name="OtherMenuItem">
+        <attr name="piv_title" format="string"/>
+        <attr name="piv_icon" format="integer"/>
+    </declare-styleable>
 </resources>

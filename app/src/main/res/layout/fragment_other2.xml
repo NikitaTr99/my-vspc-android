@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent" android:overScrollMode="never" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:paddingBottom="16dp"
+        android:clipToPadding="false"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:isScrollContainer="false"
+        tools:context=".screens.other.OtherFragment">
+
+        <include layout="@layout/nav_header_main"/>
+
+        <TextView
+            android:text="@string/nav_web_title"
+            android:layout_marginStart="16dp"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="?attr/colorOnSurface"
+            android:layout_marginVertical="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.ntsoftware.vspc.myvspc.ui.OtherMenuItem
+            android:id="@+id/other_menu_site_home"
+            style="@style/LessonCard"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="4dp"
+            app:cardCornerRadius="16dp"
+            app:piv_icon="@drawable/ic_web"
+            app:piv_title="@string/nav_site_home" />
+
+        <com.ntsoftware.vspc.myvspc.ui.OtherMenuItem
+            android:id="@+id/other_menu_site_enrollee"
+            app:piv_title="@string/nav_site_enrollee"
+            app:piv_icon="@drawable/ic_web"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="4dp"
+            app:cardCornerRadius="16dp"
+            style="@style/LessonCard"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"/>
+
+        <com.ntsoftware.vspc.myvspc.ui.OtherMenuItem
+            android:id="@+id/other_menu_site_student"
+            app:piv_title="@string/nav_site_student"
+            app:piv_icon="@drawable/ic_web"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="4dp"
+            app:cardCornerRadius="16dp"
+            style="@style/LessonCard"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"/>
+
+        <com.ntsoftware.vspc.myvspc.ui.OtherMenuItem
+            android:id="@+id/other_menu_site_about"
+            app:piv_title="@string/nav_site_about"
+            app:piv_icon="@drawable/ic_web"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="4dp"
+            app:cardCornerRadius="16dp"
+            style="@style/LessonCard"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"/>
+
+
+        <TextView
+            android:text="@string/nav_social_title"
+            android:layout_marginStart="16dp"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="?attr/colorOnSurface"
+            android:layout_marginVertical="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+
+        <com.ntsoftware.vspc.myvspc.ui.OtherMenuItem
+            android:id="@+id/other_menu_social_vk"
+            app:piv_title="@string/menu_vk"
+            app:piv_icon="@drawable/ic_vk_compact_logo"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="4dp"
+            app:cardCornerRadius="16dp"
+            style="@style/LessonCard"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"/>
+
+        <com.ntsoftware.vspc.myvspc.ui.OtherMenuItem
+            android:id="@+id/other_menu_social_instagram"
+            app:piv_title="@string/menu_instagram"
+            app:piv_icon="@drawable/ic_instagram_logo"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="4dp"
+            app:cardCornerRadius="16dp"
+            style="@style/LessonCard"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"/>
+
+        <com.ntsoftware.vspc.myvspc.ui.OtherMenuItem
+            android:id="@+id/other_menu_social_youtube"
+            app:piv_title="@string/menu_youtube"
+            app:piv_icon="@drawable/ic_youtube_logo"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="4dp"
+            app:cardCornerRadius="16dp"
+            style="@style/LessonCard"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"/>
+
+        <TextView
+            android:text="Приложение"
+            android:layout_marginLeft="16dp"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="?attr/colorOnSurface"
+            android:layout_marginVertical="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.ntsoftware.vspc.myvspc.ui.OtherMenuItem
+            android:id="@+id/other_menu_settings"
+            app:piv_title="@string/menu_settings"
+            app:piv_icon="@drawable/ic_settings"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="4dp"
+            app:cardCornerRadius="16dp"
+            style="@style/LessonCard"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"/>
+
+    </LinearLayout>
+</ScrollView>

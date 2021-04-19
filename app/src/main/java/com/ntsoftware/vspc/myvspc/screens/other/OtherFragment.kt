@@ -15,6 +15,7 @@ import androidx.navigation.Navigation
 import com.google.android.material.navigation.NavigationView
 import com.ntsoftware.vspc.myvspc.MainActivity
 import com.ntsoftware.vspc.myvspc.R
+import com.ntsoftware.vspc.myvspc.ui.OtherMenuItem
 
 class OtherFragment: Fragment() {
 
@@ -24,35 +25,50 @@ class OtherFragment: Fragment() {
 
     private lateinit var main_activity: MainActivity
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val root: View = inflater.inflate(R.layout.fragment_other, container, false)
+    private val items_id: Array<Int> = arrayOf(
+            R.id.other_menu_site_home,
+            R.id.other_menu_site_enrollee,
+            R.id.other_menu_site_student,
+            R.id.other_menu_site_about,
+            R.id.other_menu_social_vk,
+            R.id.other_menu_social_instagram,
+            R.id.other_menu_social_youtube,
+            R.id.other_menu_settings
+    )
 
-        navigation_view = root.findViewById(R.id.other_nav_view)
+    private val menu_items = ArrayList<OtherMenuItem>()
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val root: View = inflater.inflate(R.layout.fragment_other2, container, false)
 
         main_activity = activity as MainActivity
 
         (activity as MainActivity).supportActionBar?.hide()
 
-        navigation_view.setNavigationItemSelectedListener(menu_item_selected)
-
         main_activity.needBehavior(false)
+
+        for (id in items_id) {
+            val item = root.findViewById<OtherMenuItem>(id)
+            item.setOnClickListener(menu_item_selected)
+            if (item != null) menu_items.add(item)
+        }
 
         return root
     }
 
-    private val menu_item_selected: NavigationView.OnNavigationItemSelectedListener = NavigationView.OnNavigationItemSelectedListener { item ->
-        when (item.itemId) {
+    private val menu_item_selected: View.OnClickListener = View.OnClickListener { v ->
+        when (v.id) {
 
-            R.id.nav_settings -> main_activity.nav_controller.navigate(R.id.nav_settings_activity)
+            R.id.other_menu_settings -> main_activity.nav_controller.navigate(R.id.nav_settings_activity)
 
-            R.id.nav_web_home -> openWebSite("https://www.vspc34.ru/")
-            R.id.nav_web_enrollee -> openWebSite("https://www.vspc34.ru/index.php?option=com_content&view=category&id=9&Itemid=22")
-            R.id.nav_web_student -> openWebSite("https://www.vspc34.ru/index.php?option=com_content&view=category&id=50&Itemid=42")
-            R.id.nav_web_about -> openWebSite("https://www.vspc34.ru/index.php?option=com_content&view=category&id=104&Itemid=152")
+            R.id.other_menu_site_home -> openWebSite("https://www.vspc34.ru/")
+            R.id.other_menu_site_enrollee -> openWebSite("https://www.vspc34.ru/index.php?option=com_content&view=category&id=9&Itemid=22")
+            R.id.other_menu_site_student -> openWebSite("https://www.vspc34.ru/index.php?option=com_content&view=category&id=50&Itemid=42")
+            R.id.other_menu_site_about -> openWebSite("https://www.vspc34.ru/index.php?option=com_content&view=category&id=104&Itemid=152")
 
-            R.id.nav_vk -> openWebSite("https://vk.com/true_vspc34")
-            R.id.nav_instagram -> openWebSite("https://www.instagram.com/vspcinst")
-            R.id.nav_youtube -> openWebSite("https://www.youtube.com/channel/UCuzlglODRI-VG4Qhu58tmRQ")
+            R.id.other_menu_social_vk -> openWebSite("https://vk.com/true_vspc34")
+            R.id.other_menu_social_instagram -> openWebSite("https://www.instagram.com/vspcinst")
+            R.id.other_menu_social_youtube -> openWebSite("https://www.youtube.com/channel/UCuzlglODRI-VG4Qhu58tmRQ")
 
             else -> Toast.makeText(context, "No support", Toast.LENGTH_SHORT).show()
         }

@@ -10,11 +10,6 @@ import retrofit2.http.Query;
 
 public interface JSONScheduleApi {
     @GET("/schedule/get")
-    Call<SchWeek> getScheduleWeek(@Query("group") int group,
-                                  @Query("subgroup") int subgroup,
-                                  @Query("semester") int semester);
-
-    @GET("/schedule/getn")
     Call<ScheduleWeek> getScheduleWeek(@Query("group") int group,
                                        @Query("subgroup") int subgroup,
                                        @Query("semester") int semester,
