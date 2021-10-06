@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "147567158975",
+    "project_id": "my-vspc",
+    "storage_bucket": "my-vspc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147567158975:android:ffdcfaf86cdaf419a2080a",
+        "android_client_info": {
+          "package_name": "com.ntsoftware.vspc.myvspc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "147567158975-hoq25b9740ngeedgc81btu6sv1mc8emg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0Hj0nUJELCNhrpiI5EKV6Us0hQwWGUDg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "147567158975-hoq25b9740ngeedgc81btu6sv1mc8emg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

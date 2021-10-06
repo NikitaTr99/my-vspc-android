@@ -50,6 +50,7 @@ class ScheduleHolder(itemView: View): DiscoverHolder(itemView) {
         val subgroup: String? = preference.getString("subgroup", null)
         val semester: String? = preference.getString("semester", null)
 
+        //TODO переделать бред 
         if (group != null && subgroup != null && semester != null) {
 
             service_message.text = "Загрузка..."
