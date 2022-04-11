@@ -10,19 +10,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ntsoftware.vspc.myvspc.R;
+import com.ntsoftware.vspc.myvspc.screens.news.model.BlockEntity;
 import com.ntsoftware.vspc.myvspc.screens.news.model.NewsBlock;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 public class RvBlocksAdapter extends RecyclerView.Adapter<RvBlocksAdapter.BlockViewHolder>{
 
-    private List<NewsBlock> blocks;
+    private List<BlockEntity> blocks;
 
-    public RvBlocksAdapter(List<NewsBlock> blocks) {
+    public RvBlocksAdapter(List<BlockEntity> blocks) {
         this.blocks = blocks;
     }
 
@@ -68,22 +66,20 @@ public class RvBlocksAdapter extends RecyclerView.Adapter<RvBlocksAdapter.BlockV
             super(itemView);
         }
 
-        abstract void bind(NewsBlock newsBlock);
+        abstract void bind(BlockEntity newsBlock);
     }
     protected class TextBlockViewHolder extends BlockViewHolder {
 
-        NewsBlock block;
-
-        @BindView(R.id.block_text)
+        BlockEntity block;
         TextView textView;
 
         public TextBlockViewHolder(@NonNull View itemView) {
             super(itemView);
-            ButterKnife.bind(this,itemView);
+            textView = itemView.findViewById(R.id.block_text);
         }
 
         @Override
-        void bind(NewsBlock newsBlock) {
+        void bind(BlockEntity newsBlock) {
             this.block = newsBlock;
             textView.setText(block.getData());
         }
@@ -91,21 +87,19 @@ public class RvBlocksAdapter extends RecyclerView.Adapter<RvBlocksAdapter.BlockV
 
     protected class ImageBlockViewHolder extends BlockViewHolder {
 
-        NewsBlock block;
-
-        @BindView(R.id.block_image)
+        BlockEntity block;
         ImageView imageView;
 
         public ImageBlockViewHolder(@NonNull View itemView) {
             super(itemView);
-            ButterKnife.bind(this,itemView);
+            imageView = itemView.findViewById(R.id.block_image);
         }
 
         @Override
-        void bind(NewsBlock newsBlock) {
+        void bind(BlockEntity newsBlock) {
             this.block = newsBlock;
             Picasso.get()
-                    .load(block.getData())
+                    .load("https://nikitatr99.fvds.ru/image/" + block.getData())
                     .error(R.drawable.accent_grad)
                     .into(imageView);
         }

@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NewsService {
     private static NewsService mInstance;
 
-    private static final String BASE_URL = "http://192.168.0.141:8085";
+    private static final String BASE_URL = "https://nikitatr99.fvds.ru";
 //    private static final String BASE_URL = "http://192.168.43.97:8085";
 
     private Retrofit mRetrofit;

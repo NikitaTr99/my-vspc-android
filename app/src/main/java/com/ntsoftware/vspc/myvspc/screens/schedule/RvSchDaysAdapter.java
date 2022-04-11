@@ -19,9 +19,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 public class RvSchDaysAdapter extends RecyclerView.Adapter<RvSchDaysAdapter.SchDayViewHolder> {
 
     Context context;
@@ -103,15 +100,14 @@ public class RvSchDaysAdapter extends RecyclerView.Adapter<RvSchDaysAdapter.SchD
 
     public class SchDayViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.tv_name_of_day)
         TextView name_of_day;
 
-        @BindView(R.id.rv_schedule_lesson)
         RecyclerView lessons_recycler;
 
         public SchDayViewHolder(@NonNull View itemView) {
             super(itemView);
-            ButterKnife.bind(this,itemView);
+            name_of_day = itemView.findViewById(R.id.rv_schedule_lesson);
+            lessons_recycler = itemView.findViewById(R.id.rv_schedule_lesson);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, RecyclerView.VERTICAL,false);
 
             lessons_recycler.setLayoutManager(linearLayoutManager);

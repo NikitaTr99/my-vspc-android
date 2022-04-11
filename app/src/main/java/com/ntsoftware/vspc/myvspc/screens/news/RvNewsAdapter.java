@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.card.MaterialCardView;
 import com.ntsoftware.vspc.myvspc.R;
 import com.ntsoftware.vspc.myvspc.screens.news.detail.NewsDetailActivity;
+import com.ntsoftware.vspc.myvspc.screens.news.model.AssembledNewsPreview;
 import com.ntsoftware.vspc.myvspc.screens.news.model.SimpleNews;
 import com.squareup.picasso.Picasso;
 
@@ -22,28 +23,25 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 public class RvNewsAdapter extends RecyclerView.Adapter<RvNewsAdapter.NewsViewHolder> {
 
-    private List<SimpleNews> simpleNews;
+    private List<AssembledNewsPreview> newsPreview;
 
     public RvNewsAdapter() {
-        simpleNews = new ArrayList<>();
+        newsPreview = new ArrayList<>();
     }
 
-    public RvNewsAdapter(List<SimpleNews> simpleNews) {
-        this.simpleNews = simpleNews;
+    public RvNewsAdapter(List<AssembledNewsPreview> simpleNews) {
+        this.newsPreview = simpleNews;
     }
 
-    public void addItem(SimpleNews item) {
-        simpleNews.add(item);
+    public void addItem(AssembledNewsPreview item) {
+        newsPreview.add(item);
         this.notifyDataSetChanged();
     }
 
-    public void addItems(List<SimpleNews> items) {
-        simpleNews.addAll(items);
+    public void addItems(List<AssembledNewsPreview> items) {
+        newsPreview.addAll(items);
         this.notifyDataSetChanged();
     }
 
@@ -61,18 +59,19 @@ public class RvNewsAdapter extends RecyclerView.Adapter<RvNewsAdapter.NewsViewHo
     @Override
     public void onBindViewHolder(@NonNull NewsViewHolder holder, int position) {
 
-        holder.bind(simpleNews.get(position));
+        holder.bind(newsPreview.get(position));
 
         holder.parentLayout.setOnClickListener(
                 v -> {
-                    SimpleNews simpleNews = holder.simpleNews;
+                    AssembledNewsPreview newsPreview = holder.newsPreview;
 
-                    Bundle arguments = NewsDetailActivity.newBundle(simpleNews.getId(),
-                            simpleNews.getTitle(),
-                            simpleNews.getSub_title(),
-                            simpleNews.getCreator(),
-                            simpleNews.getType(),
-                            simpleNews.getImage()
+                    Bundle arguments = NewsDetailActivity.newBundle(
+                            newsPreview.getNewsId().toString(),
+                            newsPreview.getTitle(),
+                            newsPreview.getSubTitle(),
+                            newsPreview.getCreator(),
+                            newsPreview.getType(),
+                            newsPreview.getImageId().toString()
                     );
 
                     Navigation.findNavController(holder.itemView).navigate(R.id.nav_news_detail_activity, arguments);
@@ -82,63 +81,62 @@ public class RvNewsAdapter extends RecyclerView.Adapter<RvNewsAdapter.NewsViewHo
 
     @Override
     public int getItemCount() {
-        return simpleNews.size();
+        return newsPreview.size();
     }
 
     class NewsViewHolder extends RecyclerView.ViewHolder {
 
         public static final String AUTHOR_TIME_DIVIDEND = " • ";
 
-        public SimpleNews simpleNews;
+        public AssembledNewsPreview newsPreview;
 
-        @BindView(R.id.news_title)
         public TextView title;
 
-        @BindView(R.id.news_sub_title)
         public TextView sub_title;
 
-        @BindView(R.id.news_type_name)
         public TextView type_name;
 
-        @BindView(R.id.news_author_time)
         public TextView author_time;
 
-        @BindView(R.id.news_image)
         public ImageView image;
 
-        @BindView(R.id.news_type_mark)
         public MaterialCardView typeMark;
 
-        @BindView(R.id.news_card_layout)
         public View parentLayout;
 
 
         public NewsViewHolder(@NonNull View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            title = itemView.findViewById(R.id.news_title);
+            sub_title = itemView.findViewById(R.id.news_sub_title);
+            type_name = itemView.findViewById(R.id.news_type_name);
+            author_time = itemView.findViewById(R.id.news_author_time);
+            image = itemView.findViewById(R.id.news_image);
+            typeMark = itemView.findViewById(R.id.news_type_mark);
+            parentLayout = itemView.findViewById(R.id.news_card_layout);
         }
 
-        void bind(SimpleNews newsItem) {
+        void bind(AssembledNewsPreview newsItem) {
 
-            simpleNews = newsItem;
+            newsPreview = newsItem;
 
             title.setText(newsItem.getTitle() != null ? newsItem.getTitle() : "Null");
 
-            sub_title.setText(newsItem.getSub_title());
+            sub_title.setText(newsItem.getSubTitle());
 
-            type_name.setText(newsItem.getType_name());
+            type_name.setText(newsItem.getTypeName());
 
-            String date = new SimpleDateFormat("dd.MM.yy HH:mm").format(newsItem.getDate());
+            String date = new SimpleDateFormat("dd.MM.yy HH:mm").format(newsItem.getCreatedAt());
 
             author_time.setText(newsItem.getCreator() + AUTHOR_TIME_DIVIDEND + date);
 
 
             Picasso.get()
-                    .load(simpleNews.getImage())
+                    .load("https://nikitatr99.fvds.ru/image/" + newsPreview.getImageId())
                     .error(R.drawable.accent_grad)
                     .into(image);
 
-            switch ((int) simpleNews.getType()) {
+            switch ((int) newsPreview.getType()) {
                 case 1:
                     typeMark.setCardBackgroundColor(parentLayout.getContext().getColor(R.color.colorNewsTypeNull));
                     typeMark.setVisibility(View.GONE);

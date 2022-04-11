@@ -14,14 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
 import com.ntsoftware.vspc.myvspc.R;
+import com.ntsoftware.vspc.myvspc.screens.news.model.BlockEntity;
 import com.ntsoftware.vspc.myvspc.services.NewsService;
 import com.ntsoftware.vspc.myvspc.screens.news.model.NewsBlock;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import java.util.UUID;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,26 +35,17 @@ public class NewsDetailFragment extends Fragment {
     public static final String ARG_NEWS_TYPE = "news_type";
     public static final String ARG_NEWS_IMAGE = "news_image";
 
-    private long news_id;
+    private String news_id;
     private String title;
     private String sub_title;
     private String author;
     private long type;
     private String image;
 
-    @BindView(R.id.news_block_list)
     public RecyclerView recyclerView;
-
-    @BindView(R.id.detail_title)
     public TextView title_tv;
-
-    @BindView(R.id.detail_sub_title)
     public TextView subtitle_tv;
-
-    @BindView(R.id.detail_type_mark)
     MaterialCardView typeMark;
-
-    @BindView(R.id.detail_image)
     ImageView imageView;
 
     public NewsDetailFragment() {
@@ -69,7 +60,7 @@ public class NewsDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            news_id = getArguments().getLong(ARG_NEWS_ID);
+            news_id = getArguments().getString(ARG_NEWS_ID);
             title = getArguments().getString(ARG_NEWS_TITLE);
             sub_title = getArguments().getString(ARG_NEWS_SUB_TITLE);
             author = getArguments().getString(ARG_NEWS_CREATOR);
@@ -80,15 +71,19 @@ public class NewsDetailFragment extends Fragment {
 
 
 
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_news_detail, container, false);
-        ButterKnife.bind(this, view);
+        recyclerView = view.findViewById(R.id.news_block_list);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(container.getContext(), RecyclerView.VERTICAL,false);
+        title_tv = view.findViewById(R.id.detail_title);
+        subtitle_tv = view.findViewById(R.id.detail_sub_title);
+        typeMark = view.findViewById(R.id.detail_type_mark);
+        imageView = view.findViewById(R.id.detail_image);
+
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(container.getContext(), RecyclerView.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
         title_tv.setText(title);
@@ -111,25 +106,22 @@ public class NewsDetailFragment extends Fragment {
         }
 
         Picasso.get()
-                .load(image)
+                .load("https://nikitatr99.fvds.ru/image/"+ image)
                 .error(R.drawable.accent_grad)
                 .into(imageView);
-
-
-
 
 
         NewsService.getInstance()
                 .getJSONApi()
                 .gelAllBlocksByNewsId(news_id)
-                .enqueue(new Callback<List<NewsBlock>>() {
+                .enqueue(new Callback<List<BlockEntity>>() {
                     @Override
-                    public void onResponse(Call<List<NewsBlock>> call, Response<List<NewsBlock>> response) {
+                    public void onResponse(Call<List<BlockEntity>> call, Response<List<BlockEntity>> response) {
                         recyclerView.setAdapter(new RvBlocksAdapter(response.body()));
                     }
 
                     @Override
-                    public void onFailure(Call<List<NewsBlock>> call, Throwable t) {
+                    public void onFailure(Call<List<BlockEntity>> call, Throwable t) {
                         Log.e("NewsViewModel",t.getMessage());
                     }
                 });

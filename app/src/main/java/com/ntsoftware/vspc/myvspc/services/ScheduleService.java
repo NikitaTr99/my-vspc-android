@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ScheduleService {
     private static ScheduleService mInstance;
 
-    private static final String BASE_URL = "http://192.168.0.141:8087";
+    private static final String BASE_URL = "https://nikitatr99.fvds.ru";
 //    private static final String BASE_URL = "http://192.168.43.97:8087";
 
     private Retrofit mRetrofit;

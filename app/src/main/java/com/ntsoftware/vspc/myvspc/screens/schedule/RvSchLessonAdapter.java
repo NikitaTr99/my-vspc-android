@@ -18,9 +18,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 public class RvSchLessonAdapter extends RecyclerView.Adapter<RvSchLessonAdapter.SchLessonViewHolder> {
 
     Context context;
@@ -73,24 +70,19 @@ public class RvSchLessonAdapter extends RecyclerView.Adapter<RvSchLessonAdapter.
 
     public class SchLessonViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.sch_lesson_name)
         TextView lesson_name;
-
-        @BindView(R.id.sch_lesson_details)
         TextView lesson_detail;
-
-        @BindView(R.id.sch_lesson_start)
         TextView lesson_start;
-
-        @BindView(R.id.sch_lesson_end)
         TextView lesson_end;
-
-        @BindView(R.id.sch_lesson_break)
         TextView lesson_break;
 
         public SchLessonViewHolder(@NonNull View itemView) {
             super(itemView);
-            ButterKnife.bind(this,itemView);
+            lesson_name = itemView.findViewById(R.id.sch_lesson_name);
+            lesson_detail = itemView.findViewById(R.id.sch_lesson_details);
+            lesson_start = itemView.findViewById(R.id.sch_lesson_start);
+            lesson_end = itemView.findViewById(R.id.sch_lesson_end);
+            lesson_break = itemView.findViewById(R.id.sch_lesson_break);
         }
     }
 }

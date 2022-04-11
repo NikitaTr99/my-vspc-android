@@ -10,9 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.ntsoftware.vspc.myvspc.R;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 public class NewsDetailActivity extends AppCompatActivity {
 
     public static final String ARG_NEWS_ID = "news_id";
@@ -22,11 +19,11 @@ public class NewsDetailActivity extends AppCompatActivity {
     public static final String ARG_NEWS_TYPE = "news_type";
     public static final String ARG_NEWS_IMAGE = "news_image";
 
-    public static Bundle newBundle(long id, String title, String subtitle, String creator, long type, String image) {
+    public static Bundle newBundle(String id, String title, String subtitle, String creator, long type, String image) {
 
         Bundle bundle = new Bundle();
 
-        bundle.putLong(ARG_NEWS_ID, id);
+        bundle.putString(ARG_NEWS_ID, id);
         bundle.putString(ARG_NEWS_TITLE, title);
         bundle.putString(ARG_NEWS_SUB_TITLE, subtitle);
         bundle.putString(ARG_NEWS_CREATOR, creator);
@@ -36,9 +33,6 @@ public class NewsDetailActivity extends AppCompatActivity {
         return bundle;
     }
 
-
-
-    @BindView(R.id.det_toolbar)
     MaterialToolbar toolbar;
 
     @Override
@@ -47,7 +41,8 @@ public class NewsDetailActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_news_detail2);
 
-        ButterKnife.bind(this);
+        toolbar = findViewById(R.id.det_toolbar);
+
         setSupportActionBar(toolbar);
 
         ActionBar actionBar = getSupportActionBar();
@@ -60,7 +55,7 @@ public class NewsDetailActivity extends AppCompatActivity {
         if(savedInstanceState == null){
             Bundle arguments = new Bundle();
 
-            arguments.putLong(NewsDetailFragment.ARG_NEWS_ID, getIntent().getLongExtra(NewsDetailActivity.ARG_NEWS_ID,0));
+            arguments.putString(NewsDetailFragment.ARG_NEWS_ID, getIntent().getStringExtra(NewsDetailActivity.ARG_NEWS_ID));
             arguments.putString(ARG_NEWS_TITLE, getIntent().getStringExtra(ARG_NEWS_TITLE));
             arguments.putString(ARG_NEWS_SUB_TITLE, getIntent().getStringExtra(ARG_NEWS_SUB_TITLE));
             arguments.putString(ARG_NEWS_CREATOR, getIntent().getStringExtra(ARG_NEWS_CREATOR));

@@ -14,28 +14,27 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.ntsoftware.vspc.myvspc.MainActivity;
 import com.ntsoftware.vspc.myvspc.R;
+import com.ntsoftware.vspc.myvspc.screens.news.model.AssembledNewsPreview;
 import com.ntsoftware.vspc.myvspc.services.NewsService;
 import com.ntsoftware.vspc.myvspc.screens.news.model.SimpleNews;
 
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class NewsFragment extends Fragment {
 
-    @BindView(R.id.home_news_rw)
     RecyclerView recyclerView;
 
-    @BindView(R.id.rfl)
     SwipeRefreshLayout swipeRefreshLayout;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_news, container, false);
-        ButterKnife.bind(this,root);
+        recyclerView = root.findViewById(R.id.home_news_rw);
+        swipeRefreshLayout = root.findViewById(R.id.rfl);
+
 
         if(!((MainActivity)getActivity()).getSupportActionBar().isShowing()) {
             ((MainActivity)getActivity()).getSupportActionBar().show();
@@ -67,15 +66,15 @@ public class NewsFragment extends Fragment {
         NewsService.getInstance()
                 .getJSONApi()
                 .getAllSimpleNews()
-                .enqueue(new Callback<List<SimpleNews>>() {
+                .enqueue(new Callback<List<AssembledNewsPreview>>() {
                     @Override
-                    public void onResponse(Call<List<SimpleNews>> call, Response<List<SimpleNews>> response) {
+                    public void onResponse(Call<List<AssembledNewsPreview>> call, Response<List<AssembledNewsPreview>> response) {
                         recyclerView.setAdapter(new RvNewsAdapter(response.body()));
                         swipeRefreshLayout.setRefreshing(false);
                     }
 
                     @Override
-                    public void onFailure(Call<List<SimpleNews>> call, Throwable t) {
+                    public void onFailure(Call<List<AssembledNewsPreview>> call, Throwable t) {
                         Log.e("NewsViewModel",t.getMessage());
                         swipeRefreshLayout.setRefreshing(false);
                     }

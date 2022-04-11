@@ -19,12 +19,8 @@ import com.ntsoftware.vspc.myvspc.MainActivity;
 import com.ntsoftware.vspc.myvspc.R;
 import com.ntsoftware.vspc.myvspc.storage.ScheduleCache;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class ScheduleFragment extends Fragment {
-
-    @BindView(R.id.rv_schedule)
     RecyclerView sch_recycler;
 
     MaterialTextView status_view;
@@ -43,7 +39,7 @@ public class ScheduleFragment extends Fragment {
 
         schedule_cache = new ScheduleCache(getContext());
 
-        ButterKnife.bind(this,root);
+        sch_recycler = root.findViewById(R.id.rv_schedule);
 
         if(!((MainActivity)getActivity()).getSupportActionBar().isShowing()) {
 
