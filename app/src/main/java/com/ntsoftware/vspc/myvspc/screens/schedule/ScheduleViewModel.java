@@ -69,7 +69,7 @@ public class ScheduleViewModel extends AndroidViewModel {
             try {
                 ScheduleService.getInstance()
                         .getJSONApi()
-                        .getScheduleWeek(Integer.parseInt(group), Integer.parseInt(subgroup), Integer.parseInt(semester), 2)
+                        .getScheduleWeek(Integer.parseInt(group), Integer.parseInt(subgroup), Integer.parseInt(semester))
                         .enqueue(new Callback<ScheduleWeek>() {
                             @Override
                             public void onResponse(@NotNull Call<ScheduleWeek> call, @NotNull Response<ScheduleWeek> response) {

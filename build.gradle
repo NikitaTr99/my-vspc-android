@@ -6,7 +6,7 @@ buildscript {
     }
 
     ext {
-        kotlinVersion = '1.4.20'
+        kotlinVersion = '1.5.30'
     }
 
     dependencies {

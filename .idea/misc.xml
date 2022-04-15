@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Nikit/Desktop/myvspc/android/app/src/main/res/layout/fragment_other.xml" value="0.10840108401084012" />
+        <entry key="..\:/Users/Nikit/Desktop/myvspc/android/app/src/main/res/layout/fragment_other2.xml" value="0.10840108401084012" />
+        <entry key="..\:/Users/Nikit/Desktop/myvspc/android/app/src/main/res/layout/rv_item_discover_schedule.xml" value="0.1" />
         <entry key="..\:/Users/Nikit/Desktop/myvspc/android/app/src/main/res/xml/root_pref.xml" value="0.10840108401084012" />
       </map>
     </option>

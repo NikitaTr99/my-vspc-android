@@ -93,17 +93,6 @@
             android:layout_height="65dp"/>
 
         <com.ntsoftware.vspc.myvspc.ui.OtherMenuItem
-            android:id="@+id/other_menu_social_instagram"
-            app:piv_title="@string/menu_instagram"
-            app:piv_icon="@drawable/ic_instagram_logo"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginVertical="4dp"
-            app:cardCornerRadius="16dp"
-            style="@style/LessonCard"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"/>
-
-        <com.ntsoftware.vspc.myvspc.ui.OtherMenuItem
             android:id="@+id/other_menu_social_youtube"
             app:piv_title="@string/menu_youtube"
             app:piv_icon="@drawable/ic_youtube_logo"

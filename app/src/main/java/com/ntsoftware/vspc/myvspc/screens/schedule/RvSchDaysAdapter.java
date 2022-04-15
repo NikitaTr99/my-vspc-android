@@ -106,7 +106,7 @@ public class RvSchDaysAdapter extends RecyclerView.Adapter<RvSchDaysAdapter.SchD
 
         public SchDayViewHolder(@NonNull View itemView) {
             super(itemView);
-            name_of_day = itemView.findViewById(R.id.rv_schedule_lesson);
+            name_of_day = itemView.findViewById(R.id.tv_name_of_day);
             lessons_recycler = itemView.findViewById(R.id.rv_schedule_lesson);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, RecyclerView.VERTICAL,false);
 

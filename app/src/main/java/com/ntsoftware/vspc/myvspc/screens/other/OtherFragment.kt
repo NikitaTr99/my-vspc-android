@@ -31,7 +31,6 @@ class OtherFragment: Fragment() {
             R.id.other_menu_site_student,
             R.id.other_menu_site_about,
             R.id.other_menu_social_vk,
-            R.id.other_menu_social_instagram,
             R.id.other_menu_social_youtube,
             R.id.other_menu_settings
     )
@@ -67,7 +66,6 @@ class OtherFragment: Fragment() {
             R.id.other_menu_site_about -> openWebSite("https://www.vspc34.ru/index.php?option=com_content&view=category&id=104&Itemid=152")
 
             R.id.other_menu_social_vk -> openWebSite("https://vk.com/true_vspc34")
-            R.id.other_menu_social_instagram -> openWebSite("https://www.instagram.com/vspcinst")
             R.id.other_menu_social_youtube -> openWebSite("https://www.youtube.com/channel/UCuzlglODRI-VG4Qhu58tmRQ")
 
             else -> Toast.makeText(context, "No support", Toast.LENGTH_SHORT).show()
