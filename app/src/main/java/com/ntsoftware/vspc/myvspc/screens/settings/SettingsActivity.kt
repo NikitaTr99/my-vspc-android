@@ -66,7 +66,7 @@ class SettingsActivity : AppCompatActivity() {
             }
 
             findPreference<Preference>("settings_contact_developer")?.setOnPreferenceClickListener {
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/Tremper")))
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/tremper01")))
                 true
             }
 
